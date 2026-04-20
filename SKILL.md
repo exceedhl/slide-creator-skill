@@ -146,6 +146,9 @@ body {
 
 ## **6. 端到端双模式状态机工作流 (Dual-Mode State Machine & Assembly)**
 
+为了确保在本地零配置也能畅通无阻地使用此技能，AI 助手在每次开启新会话时，必须**默认执行环境就绪检查**：
+*   **【零阻力包管理检查】**：在执行任何底层 Node.js 脚本之前，务必在后台静默运行命令：\`cd path/to/slide-creator-skill && npm install\`（或者检测 \`node_modules\` 确认依赖）。确保诸如 jsdom、puppeteer、css-tree 这类库已被正确安装，防止脚本引发不可预期的崩溃。
+
 为了避免大模型同时进行“生成与排版查错”导致算力崩溃，本技能在执行时必须严格遵循 **状态阻断原则**。你不能（MUST NOT）在一个回合里既写代码又做 QA。
 
 ⚠️ **基础设施黑盒原则 (Black-box Infrastructure)**：
