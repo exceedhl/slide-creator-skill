@@ -1,110 +1,119 @@
+[English](README.md) | [简体中文](README_zh.md)
+
 # Slide Creator Skill
 
-Slide Creator skill 用于将Markdown文本直接转化为格式工整、排版专业的幻灯片网页。告别繁琐的手动排版，让 AI 为你搞定一切结构与美化工作。
+Slide Creator is a powerful AI Agent skill explicitly built to transform unstructured text formats effortlessly into structured, high-end HTML presentation slides. Say goodbye to manual formatting constraints, and let the AI handle styling and components for you.
 
-## ✨ 核心能力
+## ✨ Core Capabilities
 
-- **强大的组件库 (Components)**：打破单调的纯文本，内置矩阵 (Matrix)、漏斗 (Funnel)、流程树 (Process Flow)、阶梯式 (Staircase) 等商业报告中高频使用的十几款核心排版组件。AI 会根据你的大纲语境自动调配。
-- **严谨的自动化检测 (Automated QA)**：害怕 AI 生成的排版文字重叠或者跑出框外？遇到此类问题，我们内置了自动排版巡检器。配合排版规范，AI 能够通过测量布局溢出实现问题自愈修正。
-- **自定义风格 (Custom Styling)**：从经典的极简“麦肯锡风”，到色彩鲜明的“现代商务风”。所有的样式都能自由定制，甚至可为你的品牌打造自己专属的主题。
-
----
-
-
-## 🎨 Gallery 展示案例
-
-> 以下所有内容均为该 Skill 独立处理结构化并直接生成 HTML 渲染的结果：
-
-### 1. 2025 AI 发展报告 (2025_AI_Report)
-
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/2025_AI_Report/slide_01_slide-01.png" width="100%" />
-  <img src="gallery/2025_AI_Report/slide_02_slide-02.png" width="100%" />
-  <img src="gallery/2025_AI_Report/slide_03_slide-03.png" width="100%" />
-  <img src="gallery/2025_AI_Report/slide_04_slide-04.png" width="100%" />
-</div>
-
-<br/>
-
-### 2. EV 研发咨询方案 (EV_RD_Consulting)
-
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/EV_RD_Consulting/slide_01_page.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/slide_03_page.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png" width="100%" />
-</div>
-
-<br/>
-
-### 3. PostHog 薪资指南 (PostHog_Salary)
-
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/PostHog_Salary/slide_01_slide-01.png" width="100%" />
-  <img src="gallery/PostHog_Salary/slide_02_slide-02.png" width="100%" />
-  <img src="gallery/PostHog_Salary/slide_03_slide-03.png" width="100%" />
-  <img src="gallery/PostHog_Salary/slide_04_slide-04.png" width="100%" />
-</div>
-
-<br/>
-
-### 4. Scrum vs Flow 效率对比 (ScrumVsFlow)
-
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/ScrumVsFlow/slide_01_slide-cover.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/slide_02_slide-origins.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/slide_03_slide-economics.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/slide_04_slide-cynefin.png" width="100%" />
-</div>
-
-<br/>
-
-> *注：上述截图并非全景，仅抽样展示前几张代表性布局。由于技能直接生成标准的 HTML/CSS，展示中涉及的占位图片均可在完成排版后由大模型按像素替换。*
+- **Powerful Built-in Components**: Moving beyond basic text rendering, the engine embeds a rich library of layouts widely used in corporate and consulting reports (e.g., Matrices, Funnels, Process Flows, Timelines, Pyramids, Staircases). The AI will contextually route your raw data into the most fitting component.
+- **Robust Auto-QA**: Worried about AI-generated slides overlapping text or overflowing constraints? Our pipeline ships with a built-in automated QA workflow. Using Headless Puppeteer and precision boundary detection, the framework evaluates bounding boxes and allows the AI to self-correct dimensions and padding seamlessly.
+- **Custom Styling**: Ranging from the classic minimalist "McKinsey/Swiss" format to vivid modern "Business" layouts, every style supports deep customization to align with your personal or enterprise brand.
 
 ---
 
+## 🎨 Gallery Showcases
 
-## 🛠 开箱即用与环境依赖
+> All of the representations below were fully structured and rendered natively to HTML CSS via this Skill natively:
 
-- **Node.js**: 本地需安装 Node.js (v18+) 以执行打包与检测脚本。
-- **NPM Modules**: 需要 `jsdom`、`css-tree` 以及 `puppeteer`。
+### 1. 2025 AI Development Report (2025_AI_Report)
 
-打开终端并进入项目根目录，通过以下 npm 命令安装所需依赖：
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_01_slide-01.png"><img src="gallery/2025_AI_Report/slide_01_slide-01.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_02_slide-02.png"><img src="gallery/2025_AI_Report/slide_02_slide-02.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_03_slide-03.png"><img src="gallery/2025_AI_Report/slide_03_slide-03.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_04_slide-04.png"><img src="gallery/2025_AI_Report/slide_04_slide-04.png" width="100%" /></a></td>
+  </tr>
+</table>
 
-```bash
-npm install
-```
+<br/>
 
-## 🚀 安装与使用方法
+### 2. EV R&D Consulting Proposal (EV_RD_Consulting)
 
-如果你的交互型 AI 原生支持指令式安装：
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_01_page.png"><img src="gallery/EV_RD_Consulting/slide_01_page.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png"><img src="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_03_page.png"><img src="gallery/EV_RD_Consulting/slide_03_page.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png"><img src="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+<br/>
+
+### 3. PostHog Compensation Guide (PostHog_Salary)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_01_slide-01.png"><img src="gallery/PostHog_Salary/slide_01_slide-01.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_02_slide-02.png"><img src="gallery/PostHog_Salary/slide_02_slide-02.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_03_slide-03.png"><img src="gallery/PostHog_Salary/slide_03_slide-03.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_04_slide-04.png"><img src="gallery/PostHog_Salary/slide_04_slide-04.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+<br/>
+
+### 4. Scrum vs Flow Comparison (ScrumVsFlow)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_01_slide-cover.png"><img src="gallery/ScrumVsFlow/slide_01_slide-cover.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_02_slide-origins.png"><img src="gallery/ScrumVsFlow/slide_02_slide-origins.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_03_slide-economics.png"><img src="gallery/ScrumVsFlow/slide_03_slide-economics.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_04_slide-cynefin.png"><img src="gallery/ScrumVsFlow/slide_04_slide-cynefin.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+<br/>
+
+> *Note: The snapshots above showcase only a sample of the representative slides. All dummy images instantiated by this Layout Engine can be sequentially swapped out for high-fidelity images generated by LLM Vision/Art pipelines mapped automatically using physical grid constraints.*
+
+---
+
+## 🛠 Prerequisites
+
+- **Node.js**: Node.js (v18+) is required to execute the assembling and introspection scripts.
+- **NPM Modules**: `jsdom`, `css-tree`, and `puppeteer` are utilized.
+
+*(This skill ships with an inline `package.json`. Invoking Agents are instructed via explicit rules to silently bootstrap and run `npm install` gracefully, meaning users will experience virtually zero un-met environment blockers.)*
+
+## 🚀 Installation & Usage
+
+If your interactive AI natively supports command-based library installation:
 
 ```bash
 npx skills add exceedhl/slide-creator-skill
 ```
 
-### 方式二：直接复制目录 (Direct Copy)
+### Method 2: Direct Directory Copy (Cursor, Cline, Gemini Agents)
 
-1. 下载或 Clone 本项目。
-2. 将解压出的整个 `slide-creator-skill` 文件夹，直接复制搬运到你工程空间里的 Agent 技能目录（例如 `.agents/skills/` 之下）。
-3. Agent 会在上下文中自动识别到 `SKILL.md` 的存在并自主加载这套排版工具能力。
+If your environment (or Local AI IDE) doesn't support the `npx skills` protocol:
+1. Clone or Download this repository.
+2. Drag and drop the extracted `slide-creator-skill` folder directly into your current workspace's agent capabilities directory (such as `.agents/skills/`).
+3. Your Agent will natively detect `SKILL.md` via context boundaries and dynamically adopt the layout-generation behaviors.
 
----
+### Prompt Trigger Examples
 
-### Prompt 触发示例
+**Scenario 1: From Scratch Generation**
+Feed any raw text/report into your workspace, and issue the following prompt:
+> "Please adhere strictly to the rules and guidelines specified in the slide creator skill to format this 3000-word go-to-market strategy document into a ~12 page Business PPT format."
 
-**场景一：全新生成一整套幻灯片**
-把长文/调研扔给 AI，附加 Prompt：
-> “使用你本地的 slide-creator-skill 帮我把这份市场进入策略生成 12 页左右的slide deck。使用 Business 风格模板。”
+**Scenario 2: Enabling Layout Correction (QA Mode)**
+If you spot cramped borders or squeezed titles in the draft previews:
+> "Run checking and optimization on the slides."
 
-AI 即会按照 `SKILL.md` 指南，逐页进行栅格尺寸的计算和生成拼接。
+## 🤖 Model Compatibility
 
-**场景二：启动脚本防边界溢出纠错 (QA Mode)**
-当肉眼观察到某页排版的文字太多被挤压时：
-> “检查并迭代优化”
+This skill framework, notably the grid computation mechanics, performs consistently well across flagship reasoning models: **Gemini 3.1**, **GLM 5.1**, and **Claude 3.6**. Currently you can expect satisfactory presentations around 2 to 3 dialogue turns natively. 
 
-
-
-## 🤖 模型兼容性推荐 (Supported Models)
-
-本技能在 **Gemini 3.1**, **GLM 5.1**, 以及 **Claude 3.6** 上目前表现都还不错，2-3轮对话可以得到整体满意的结果。**Gemini 3.1 Pro**表现相对优秀。
+> **Gemini 3.1 Pro** is recommended for superior visual spatial adherence and mathematical QA loops.
