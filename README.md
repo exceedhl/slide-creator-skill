@@ -18,10 +18,10 @@ Slide Creator 是一款由 AI 驱动的“非结构化文本到专业演讲 HTML
 ### 1. 2025 AI 发展报告 (2025_AI_Report)
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/2025_AI_Report/01_cover.png" width="100%" />
-  <img src="gallery/2025_AI_Report/02_executive_summary.png" width="100%" />
-  <img src="gallery/2025_AI_Report/03_global_market.png" width="100%" />
-  <img src="gallery/2025_AI_Report/04_us_cases.png" width="100%" />
+  <img src="gallery/2025_AI_Report/slide_01_slide-01.png" width="100%" />
+  <img src="gallery/2025_AI_Report/slide_02_slide-02.png" width="100%" />
+  <img src="gallery/2025_AI_Report/slide_03_slide-03.png" width="100%" />
+  <img src="gallery/2025_AI_Report/slide_04_slide-04.png" width="100%" />
 </div>
 
 <br/>
@@ -29,10 +29,10 @@ Slide Creator 是一款由 AI 驱动的“非结构化文本到专业演讲 HTML
 ### 2. EV 研发咨询方案 (EV_RD_Consulting)
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/EV_RD_Consulting/01_cover.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/02_macro.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/03_bcg.png" width="100%" />
-  <img src="gallery/EV_RD_Consulting/04_mckinsey.png" width="100%" />
+  <img src="gallery/EV_RD_Consulting/slide_01_page.png" width="100%" />
+  <img src="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png" width="100%" />
+  <img src="gallery/EV_RD_Consulting/slide_03_page.png" width="100%" />
+  <img src="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png" width="100%" />
 </div>
 
 <br/>
@@ -40,10 +40,10 @@ Slide Creator 是一款由 AI 驱动的“非结构化文本到专业演讲 HTML
 ### 3. PostHog 薪资指南 (PostHog_Salary)
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/PostHog_Salary/01_cover.png" width="100%" />
-  <img src="gallery/PostHog_Salary/02_agenda.png" width="100%" />
-  <img src="gallery/PostHog_Salary/03_manifesto.png" width="100%" />
-  <img src="gallery/PostHog_Salary/04_algorithm_p1.png" width="100%" />
+  <img src="gallery/PostHog_Salary/slide_01_slide-01.png" width="100%" />
+  <img src="gallery/PostHog_Salary/slide_02_slide-02.png" width="100%" />
+  <img src="gallery/PostHog_Salary/slide_03_slide-03.png" width="100%" />
+  <img src="gallery/PostHog_Salary/slide_04_slide-04.png" width="100%" />
 </div>
 
 <br/>
@@ -51,10 +51,10 @@ Slide Creator 是一款由 AI 驱动的“非结构化文本到专业演讲 HTML
 ### 4. Scrum vs Flow 效率对比 (ScrumVsFlow)
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-  <img src="gallery/ScrumVsFlow/01_cover.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/02_origins.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/03_economics.png" width="100%" />
-  <img src="gallery/ScrumVsFlow/04_cynefin.png" width="100%" />
+  <img src="gallery/ScrumVsFlow/slide_01_slide-cover.png" width="100%" />
+  <img src="gallery/ScrumVsFlow/slide_02_slide-origins.png" width="100%" />
+  <img src="gallery/ScrumVsFlow/slide_03_slide-economics.png" width="100%" />
+  <img src="gallery/ScrumVsFlow/slide_04_slide-cynefin.png" width="100%" />
 </div>
 
 <br/>
