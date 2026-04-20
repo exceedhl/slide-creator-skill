@@ -1,6 +1,6 @@
 # Slide Creator Skill
 
-Slide Creator 是一个强大的 AI 助手扩展技能包，专用于将普通的文本资料，直接转化为格式工整、排版专业的高阶幻灯片网页。告别繁琐的手动排版，让 AI 为你搞定一切结构与美化工作。
+Slide Creator skill 用于将Markdown文本直接转化为格式工整、排版专业的幻灯片网页。告别繁琐的手动排版，让 AI 为你搞定一切结构与美化工作。
 
 ## ✨ 核心能力
 
@@ -84,12 +84,12 @@ npm install
 npx skills add exceedhl/slide-creator-skill
 ```
 
-### 方式二：直接复制使用 (Direct Copy)
+### 方式二：直接复制目录 (Direct Copy)
 
-如果你的 IDE 环境不支持工具集指令，可通过直接复制文本体验功能：
-1. **获取规则**：打开本技能库的 `SKILL.md`，复制其中的全部内容。
-2. **输入语料**：在你的大模型对话框里写上：*“请遵守以下技能设定的限制条件与规范，帮我将这段语料生成一份幻灯片：[粘贴的 SKILL.md 内容]”*
-3. **本地验证**：当需要启用排版自动化检查功能时，只需将本项目所在路径给到支持代码读取的开发辅助 AI（如 Cursor / Cline）。
+如果你的 AI 环境不支持指令加载（如常规的 Cursor、Cline 等包含本地 Agent 工作流的工具）：
+1. 下载或 Clone 本项目。
+2. 将解压出的整个 `slide-creator-skill` 文件夹，直接复制搬运到你工程空间里的 Agent 技能目录（例如 `.agents/skills/` 之下）。
+3. Agent 会在上下文中自动识别到 `SKILL.md` 的存在并自主加载这套排版工具能力。
 
 ---
 
