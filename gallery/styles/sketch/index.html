@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHog 薪酬架构与组织哲学</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&amp;family=Patrick+Hand&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-yozai-medium-regular/font.css">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Default background outside slides */
+            padding: 40px 0;           /* Top/bottom padding for the whole page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;       /* Center slides horizontally */
+            gap: 40px;                 /* Gap between slides */
+            margin: 0;
+        }
+        .slide {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: add a shadow to make slides pop */
+            margin: 0 !important;      /* Override individual slide margins */
+        }
+/* Global Boilerplate Injected */
+
+    :root {
+      --border-default: #E2E8F0;
+    }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      margin: 0;
+      --slide-padding: 50px 60px;
+      --gap: 15px;
+      --font-base: 18px;
+      padding: var(--slide-padding);
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(24, 1fr);
+      gap: var(--gap);
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      /* removed background-color: #ffffff; to allow individual slides to define their own backgrounds */
+    }
+
+/* Slide Specific CSS */
+
+/* from: page_01_cover.html (scoped) */
+#slide-auto-1361308368{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto-1361308368{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto-1361308368.slide,#slide-auto-1361308368.slide *,#slide-auto-1361308368.slide *::before,#slide-auto-1361308368.slide *::after{box-sizing:border-box}
+#slide-auto-1361308368.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1361308368.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto-1361308368 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface)}
+#slide-auto-1361308368 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:64px;font-weight:700;color:var(--text-main);line-height:1.1;margin:0 0 16px 0;letter-spacing:normal;transform:rotate(-1deg)}
+#slide-auto-1361308368 h2{font-family:"Kalam","Yozai Medium",cursive;font-size:32px;font-weight:700;color:var(--accent);margin:0 0 24px 0;transform:rotate(1deg)}
+#slide-auto-1361308368 p{font-size:20px;color:var(--text-main);line-height:1.6;margin:0}
+#slide-auto-1361308368 .title-block{grid-column:2/span 12;grid-row:3/span 18;display:flex;flex-direction:column;justify-content:center;z-index:10}
+#slide-auto-1361308368 .image-container{grid-column:14/span 10;grid-row:4/span 18;position:relative;background-image:url(cover_image.png);background-size:cover;background-position:center;transform:rotate(2deg)}
+#slide-auto-1361308368 .tape{position:absolute;top:-15px;left:50%;transform:translateX(-50%) rotate(-3deg);width:100px;height:30px;background-color:rgba(229,224,216,0.8);border:1px dashed var(--grid-line);z-index:10}
+#slide-auto-1361308368 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-family:"Patrick Hand",cursive;font-size:14px;color:var(--text-main)}
+#slide-auto-1361308368 .highlight-scribble{display:inline-block;position:relative;z-index:1}
+#slide-auto-1361308368 .highlight-scribble::after{content:"";position:absolute;bottom:5px;left:-5px;right:-5px;height:15px;background-color:var(--accent-light);z-index:-1;transform:rotate(-2deg);border-radius:10px 50px 10px 30px}
+
+/* from: page_02_philosophy.html (scoped) */
+#slide-auto-42015611{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto-42015611{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto-42015611.slide,#slide-auto-42015611.slide *,#slide-auto-42015611.slide *::before,#slide-auto-42015611.slide *::after{box-sizing:border-box}
+#slide-auto-42015611.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-42015611.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto-42015611 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface)}
+#slide-auto-42015611 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:48px;font-weight:700;color:var(--text-main);margin:0;grid-column:2/span 22;grid-row:2/span 3;transform:rotate(-1deg);display:flex;align-items:flex-end}
+#slide-auto-42015611 .highlight-scribble{display:inline-block;position:relative;z-index:1;margin-right:10px}
+#slide-auto-42015611 .highlight-scribble::after{content:"";position:absolute;bottom:5px;left:-5px;right:-5px;height:15px;background-color:var(--accent-light);z-index:-1;transform:rotate(2deg);border-radius:10px 50px 10px 30px}
+#slide-auto-42015611 .left-col{grid-column:2/span 11;grid-row:6/span 16;display:flex;flex-direction:column;justify-content:flex-start;gap:24px;padding-top:10px}
+#slide-auto-42015611 h2{font-family:"Kalam","Yozai Medium",cursive;font-size:36px;color:var(--accent);margin:0;transform:rotate(1deg)}
+#slide-auto-42015611 ul{list-style:none;padding:0;margin:0;font-size:var(--font-base);line-height:1.6}
+#slide-auto-42015611 li{position:relative;padding-left:36px;margin-bottom:24px}
+#slide-auto-42015611 li::before{content:"→";position:absolute;left:0;top:-2px;font-family:"Kalam","Yozai Medium",cursive;color:var(--accent);font-weight:bold;font-size:22px}
+#slide-auto-42015611 li strong{color:var(--accent);font-size:22px;font-family:"Kalam","Yozai Medium",cursive}
+#slide-auto-42015611 .bold-marker{font-family:"Kalam","Yozai Medium",cursive;font-size:22px;font-weight:700;color:var(--text-main);display:block;margin-bottom:4px}
+#slide-auto-42015611 .right-col{grid-column:15/span 9;grid-row:6/span 16;position:relative;background-image:url(philosophy_image.png);background-size:cover;background-position:center;transform:rotate(2deg);display:flex;justify-content:center;align-items:flex-start}
+#slide-auto-42015611 .tack{position:absolute;top:-10px;width:20px;height:20px;background-color:var(--accent);border-radius:50%;border:2px solid var(--text-main);box-shadow:2px 2px 0px 0px rgba(0,0,0,0.3);z-index:10}
+#slide-auto-42015611 .tack::after{content:"";position:absolute;top:4px;left:4px;width:6px;height:6px;background-color:rgba(255,255,255,0.6);border-radius:50%}
+#slide-auto-42015611 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-size:14px}
+
+/* from: page_03_compensation.html (scoped) */
+#slide-auto--1422208717{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto--1422208717{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto--1422208717.slide,#slide-auto--1422208717.slide *,#slide-auto--1422208717.slide *::before,#slide-auto--1422208717.slide *::after{box-sizing:border-box}
+#slide-auto--1422208717.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto--1422208717.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto--1422208717 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface);padding:12px;display:flex;flex-direction:column}
+#slide-auto--1422208717 .card:hover{transform:rotate(1deg) translateY(-2px);box-shadow:6px 6px 0px 0px #2d2d2d}
+#slide-auto--1422208717 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:50px;font-weight:700;color:var(--text-main);margin:0;grid-column:2/span 22;grid-row:2/span 3;display:flex;align-items:flex-end}
+#slide-auto--1422208717 h3{font-family:"Kalam","Yozai Medium",cursive;font-size:24px;color:var(--accent);margin:0 0 10px 0}
+#slide-auto--1422208717 p{font-size:var(--font-base);color:var(--text-main);line-height:1.5;margin:0}
+#slide-auto--1422208717 .formula-card{grid-column:2/span 22;grid-row:4/span 4;background-color:var(--accent-light);justify-content:center;align-items:center;transform:rotate(-1deg);border:3px solid var(--text-main);position:relative}
+#slide-auto--1422208717 .formula-text{font-family:"Kalam","Yozai Medium",cursive;font-size:32px;font-weight:700}
+#slide-auto--1422208717 .operator{color:var(--accent);margin:0 10px}
+#slide-auto--1422208717 .bento-1{grid-column:2/span 10;grid-row:9/span 8}
+#slide-auto--1422208717 .bento-2{grid-column:13/span 11;grid-row:9/span 8;transform:rotate(1deg)}
+#slide-auto--1422208717 .bento-3{grid-column:2/span 10;grid-row:17/span 7;transform:rotate(-1deg)}
+#slide-auto--1422208717 .bento-4{grid-column:13/span 11;grid-row:17/span 7}
+#slide-auto--1422208717 .tape{position:absolute;top:-20px;left:50%;transform:translateX(-50%) rotate(2deg);width:60px;height:20px;background-color:rgba(229,224,216,0.8);border:1px dashed var(--grid-line);z-index:10}
+#slide-auto--1422208717 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-size:14px}
+
+/* from: page_04_sales_commission.html (scoped) */
+#slide-auto-1324233040{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto-1324233040{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto-1324233040.slide,#slide-auto-1324233040.slide *,#slide-auto-1324233040.slide *::before,#slide-auto-1324233040.slide *::after{box-sizing:border-box}
+#slide-auto-1324233040.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 16px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1324233040.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto-1324233040 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface);padding:24px}
+#slide-auto-1324233040 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:50px;font-weight:700;color:var(--text-main);margin:0;grid-column:2/span 22;grid-row:2/span 3;display:flex;align-items:flex-end}
+#slide-auto-1324233040 .content-area{grid-column:3/span 20;grid-row:5/span 19;display:flex;flex-direction:column;gap:20px}
+#slide-auto-1324233040 .intro-text{font-size:20px;color:var(--text-main);margin:0;line-height:1.5}
+#slide-auto-1324233040 .table-container{width:100%;border-collapse:separate;border-spacing:0;border:2px solid var(--text-main);border-radius:10px 255px 15px 225px/255px 15px 225px 15px;overflow:hidden;background:white}
+#slide-auto-1324233040 th,#slide-auto-1324233040 td{padding:6px 10px;text-align:left;border-bottom:2px dashed var(--text-light);border-right:2px dashed var(--text-light);font-size:var(--font-base)}
+#slide-auto-1324233040 th:last-child,#slide-auto-1324233040 td:last-child{border-right:none}
+#slide-auto-1324233040 tr:last-child td{border-bottom:none}
+#slide-auto-1324233040 th{font-family:"Kalam","Yozai Medium",cursive;background-color:rgba(229,224,216,0.4);color:var(--accent);font-size:24px}
+#slide-auto-1324233040 .highlight-row{background-color:var(--accent-light);font-weight:bold}
+#slide-auto-1324233040 .highlight-row td{border-bottom:2px solid var(--accent);border-top:2px solid var(--accent)}
+#slide-auto-1324233040 .scribble-arrow{font-family:"Kalam","Yozai Medium",cursive;color:var(--accent);font-size:24px;font-weight:bold}
+#slide-auto-1324233040 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-size:14px}
+
+/* from: page_05_equity_benefits.html (scoped) */
+#slide-auto--1528442899{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto--1528442899{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto--1528442899.slide,#slide-auto--1528442899.slide *,#slide-auto--1528442899.slide *::before,#slide-auto--1528442899.slide *::after{box-sizing:border-box}
+#slide-auto--1528442899.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 16px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto--1528442899.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto--1528442899 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface)}
+#slide-auto--1528442899 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:56px;font-weight:700;color:var(--text-main);margin:0;grid-column:2/span 22;grid-row:2/span 3;transform:rotate(1deg);display:flex;align-items:flex-end}
+#slide-auto--1528442899 .left-col{grid-column:2/span 9;grid-row:6/span 16;position:relative;background-image:url(equity_image.png);background-size:cover;background-position:center;transform:rotate(-2deg);display:flex;justify-content:center;align-items:flex-start}
+#slide-auto--1528442899 .tack{position:absolute;top:-10px;width:20px;height:20px;background-color:var(--text-main);border-radius:50%;border:2px solid white;box-shadow:2px 2px 0px 0px rgba(0,0,0,0.3);z-index:10}
+#slide-auto--1528442899 .tack::after{content:"";position:absolute;top:4px;left:4px;width:6px;height:6px;background-color:rgba(255,255,255,0.6);border-radius:50%}
+#slide-auto--1528442899 .right-col{grid-column:12/span 12;grid-row:4/span 19;display:flex;flex-direction:column;justify-content:center;gap:16px}
+#slide-auto--1528442899 .scribble-box{border:2px dashed var(--text-main);padding:12px 16px;border-radius:15px 225px 15px 255px/255px 15px 225px 15px;background-color:rgba(255,249,196,0.5);position:relative}
+#slide-auto--1528442899 .scribble-title{font-family:"Kalam","Yozai Medium",cursive;font-size:24px;color:var(--accent);margin:0 0 10px 0;font-weight:bold}
+#slide-auto--1528442899 p{font-size:var(--font-base);color:var(--text-main);line-height:1.5;margin:0}
+#slide-auto--1528442899 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-size:14px}
+
+/* from: page_06_culture.html (scoped) */
+#slide-auto--545660972{--primary: #fdfbf7;--accent: #ff4d4d;--accent-light: #fff9c4;--bg-base: #fdfbf7;--bg-surface-light: #ffffff;--bg-surface: #ffffff;--text-main: #2d2d2d;--text-light: #e5e0d8;--grid-line: #2d2d2d;--card-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;--card-border: 2px solid #2d2d2d;--card-shadow: 4px 4px 0px 0px #2d2d2d}
+#slide-auto--545660972{background-color:var(--bg-base);font-family:"Patrick Hand","Yozai Medium","Kalam","Yozai Medium",cursive}
+#slide-auto--545660972.slide,#slide-auto--545660972.slide *,#slide-auto--545660972.slide *::before,#slide-auto--545660972.slide *::after{box-sizing:border-box}
+#slide-auto--545660972.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 16px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto--545660972.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--text-light) 1px,transparent 1px)0 0/24px 24px;pointer-events:none;z-index:0}
+#slide-auto--545660972 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface);padding:16px;display:flex;flex-direction:column;position:relative}
+#slide-auto--545660972 h1{font-family:"Kalam","Yozai Medium",cursive;font-size:52px;font-weight:700;color:var(--text-main);margin:0;grid-column:2/span 22;grid-row:2/span 3;display:flex;align-items:flex-end}
+#slide-auto--545660972 h3{font-family:"Kalam","Yozai Medium",cursive;font-size:24px;color:var(--text-main);margin:0 0 16px 0;text-align:center}
+#slide-auto--545660972 p{font-size:var(--font-base);color:var(--text-main);line-height:1.6;margin:0}
+#slide-auto--545660972 .bento-1{grid-column:2/span 7;grid-row:6/span 15;transform:rotate(-2deg);background-color:var(--accent-light)}
+#slide-auto--545660972 .bento-2{grid-column:10/span 7;grid-row:7/span 15;transform:rotate(1deg)}
+#slide-auto--545660972 .bento-3{grid-column:18/span 6;grid-row:6/span 15;transform:rotate(2deg);border:3px dashed var(--accent)}
+#slide-auto--545660972 .tack-red{position:absolute;top:-15px;right:-10px;width:15px;height:15px;background-color:var(--accent);border-radius:50%;box-shadow:2px 2px 0px 0px rgba(0,0,0,0.3)}
+#slide-auto--545660972 .highlight-marker{background-color:rgba(255,77,77,0.2);padding:0 4px;border-radius:4px}
+#slide-auto--545660972 .source-block{grid-column:2/span 22;grid-row:24/span 1;display:flex;justify-content:flex-start;align-items:flex-end;font-size:14px}
+
+    </style>
+</head>
+<body>
+
+<!-- from: page_01_cover.html -->
+<div id="slide-auto-1361308368" class="slide">
+    <div class="title-block">
+      <h2>组织操作系统重构</h2>
+      <h1>PostHog <br>薪酬架构与<span class="highlight-scribble">组织效能</span><br>研究报告</h1>
+      <p>在激进透明与精益敏捷中的机制创新</p>
+    </div>
+    
+    <div class="image-container card">
+      <div class="tape"></div>
+    </div>
+
+    <div class="source-block">
+      Source: PostHog 薪酬福利研究指南 | 激进透明哲学
+    </div>
+  </div>
+
+<!-- from: page_02_philosophy.html -->
+<div id="slide-auto-42015611" class="slide">
+    
+    <h1><span class="highlight-scribble">激进透明哲学</span>与技能导向</h1>
+
+    <div data-component="split-layout" data-variant="asymmetric" data-density="medium" style="display: contents;">
+      
+      <div data-slot="left-col" class="left-col">
+        <ul>
+          <li>
+            <span class="bold-marker">透明度作为信任货币</span>
+            公开薪酬计算公式与职级定义，彻底消除“谈判税”。预先展示极具竞争力的薪酬范围，充当高效的自动筛选器。
+          </li>
+          <li>
+            <span class="bold-marker">支付技能而非头衔</span>
+            去头衔化（De-titling），强调角色（Role）而非地位（Status）。极宽的薪酬带宽避免了优秀的个人贡献者（IC）被迫转岗管理。
+          </li>
+          <li>
+            <span class="bold-marker">高绩效锚点</span>
+            坚信顶尖工程师产出是普通人的10倍。薪酬基准直接对标全球最高水平——旧金山市场的第90分位，用溢价吸引全球顶尖人才。
+          </li>
+        </ul>
+      </div>
+
+      <div data-slot="right-col" class="right-col card">
+        <div class="tack"></div>
+      </div>
+
+    </div>
+
+    <div class="source-block">
+      Source: 2.1 透明度作为信任货币的经济学分析 | 2.2 “支付技能而非头衔”的价值导向
+    </div>
+  </div>
+
+<!-- from: page_03_compensation.html -->
+<div id="slide-auto--1422208717" class="slide">
+    
+    <h1>薪酬算法的解构：精密计算的四个维度</h1>
+
+    <div class="card formula-card">
+      <div class="tape"></div>
+      <div class="formula-text">
+        Base Salary <span class="operator">=</span> Benchmark <span class="operator">×</span> Level Modifier <span class="operator">×</span> Step Modifier <span class="operator">×</span> Location Factor
+      </div>
+    </div>
+
+    <div class="card bento-1">
+      <h3>1. Benchmark (市场基准)</h3>
+      <p>所有薪酬计算的起点。明确锚定<strong>美国旧金山 (SF)</strong> 的市场费率。工程类角色对标第90分位，非工程类角色对标中位数+20%。依托 Pave 的实时数据，拒绝传统调查问卷的滞后性。</p>
+    </div>
+
+    <div class="card bento-2">
+      <h3>2. Level Modifier (级别因子)</h3>
+      <p>采用极宽泛的职级定义 (Junior / Intermediate / Senior / Staff)，适应“小团队”灵活运作。新员工默认处于Established Step，预留薪资增长空间，打破“不晋升不加薪”的传统层级桎梏。</p>
+    </div>
+
+    <div class="card bento-3">
+      <h3>3. Step Modifier (步长因子)</h3>
+      <p>数值范围：<strong>0.95 - 1.04</strong>。作为同一级别内区分成熟度的微调杠杆，允许薪资上下浮动 5%-10%。管理者可借此给予员工即时的肯定与奖励，而无需启动沉重的晋升评审流程。</p>
+    </div>
+
+    <div class="card bento-4" style="border: 3px dashed var(--accent);">
+      <h3>4. Location Factor (位置因子与全球保底)</h3>
+      <p>双保底政策：<strong>美国境内下限 0.8，全球其他地区下限 0.6</strong>。<br>极具颠覆性的设定，不仅能在发展中国家创造压倒性的人才购买力（降维打击），同时也为公司节省大量现金流（成本套利）。</p>
+    </div>
+
+    <div class="source-block">
+      Source: 3. 薪酬算法的解构 | PostHog
+    </div>
+  </div>
+
+<!-- from: page_04_sales_commission.html -->
+<div id="slide-auto-1324233040" class="slide">
+    
+    <h1>基于产品矩阵的销售佣金模型</h1>
+
+    <div class="content-area">
+      <p class="intro-text">
+        不同于传统 SaaS 简单基于合同金额 (TCV) 提成，PostHog 高度强调 <strong>年度经常性收入 (ARR)</strong> 和 <strong>产品交叉销售 (Cross-sell)</strong>。<br>
+        其核心创新在于“交叉销售乘数”，迫使销售行为从推销单一功能转向售卖整个平台价值。
+      </p>
+
+      <table class="table-container">
+        <thead>
+          <tr>
+            <th>购买产品数</th>
+            <th>基础系数</th>
+            <th>增量系数</th>
+            <th>最终乘数</th>
+            <th>销售行为影响分析</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1个</strong></td>
+            <td>0.7</td>
+            <td>0</td>
+            <td><strong>0.7x</strong></td>
+            <td>惩罚机制。单点销售面临高流失风险，强力抑制仅销售单一产品。</td>
+          </tr>
+          <tr>
+            <td><strong>2个</strong></td>
+            <td>0.7</td>
+            <td>0.2</td>
+            <td><strong>0.9x</strong></td>
+            <td>接近标准佣金。鼓励至少进行一次交叉销售。</td>
+          </tr>
+          <tr>
+            <td><strong>3个</strong></td>
+            <td>0.7</td>
+            <td>0.4</td>
+            <td><strong>1.1x</strong></td>
+            <td>奖励区间。开始获得溢价，激励推销解决方案组合。</td>
+          </tr>
+          <tr>
+            <td><strong>4个</strong></td>
+            <td>0.7</td>
+            <td>0.6</td>
+            <td><strong>1.3x</strong></td>
+            <td>高额激励。客户黏性大幅提高。</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>5个及以上</strong></td>
+            <td>0.7</td>
+            <td>0.8</td>
+            <td><strong>1.5x</strong></td>
+            <td><span class="scribble-arrow">→ 顶级激励！</span>客户流失率极低，公司愿支付50%额外佣金。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="source-block">
+      Source: 4. 增长引擎：基于产品矩阵的销售佣金模型 | PostHog
+    </div>
+  </div>
+
+<!-- from: page_05_equity_benefits.html -->
+<div id="slide-auto--1528442899" class="slide">
+    
+    <h1>股权即所有权：打破“金手铐”与终极激励</h1>
+
+    <div data-component="split-layout" data-variant="asymmetric" data-density="medium" style="display: contents;">
+      
+      <div data-slot="left-col" class="left-col card">
+        <div class="tack"></div>
+      </div>
+
+      <div data-slot="right-col" class="right-col">
+        
+        <div class="scribble-box">
+          <div class="scribble-title">颠覆性的 10 年期权行权窗口</div>
+          <p>大多数公司离职后只有90天行权期，这是变相的资产剥夺。PostHog 赋予离职员工长达 <strong>10年</strong> 的行权窗口，彻底消除财务压力，让员工保留创造的价值份额，转化为终身拥护者。</p>
+        </div>
+
+        <div class="scribble-box" style="transform: rotate(1deg);">
+          <div class="scribble-title">“无审批”的远程作战弹药</div>
+          <p>每位员工每月有 <strong>$5,000</strong> 的限额用于购买SaaS、书籍或联合办公。完全“先花钱，后审计”，消除摩擦力。此外每季度提供 $1,500 用于员工自发见面聚餐，对抗远程孤岛。</p>
+        </div>
+
+        <div class="scribble-box" style="transform: rotate(-1deg); background-color: rgba(255, 77, 77, 0.1);">
+          <div class="scribble-title">做你离职后的第一位投资人</div>
+          <p>工作满2年离职创业，PostHog 承诺成为其<strong>第一位投资者</strong>。通过这种合伙人式的纽带，吸引最具“创始人精神”的顶尖人才全情投入。</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="source-block">
+      Source: 5. 股权即所有权 | 6. 福利与工具
+    </div>
+  </div>
+
+<!-- from: page_06_culture.html -->
+<div id="slide-auto--545660972" class="slide">
+    
+    <h1>组织文化与精益方法论：孕育创新的土壤</h1>
+
+    <div class="card bento-1">
+      <div class="tack-red"></div>
+      <h3>小团队自治</h3>
+      <p>
+        公司拆分为一个个独立的“小团队”（Small Teams），拥有极高自主权、路线图和定价权。<br><br>
+        <span class="highlight-marker">管理与薪酬解耦</span>：经理无权决定下属薪酬，薪酬完全由透明公式决定。经理不再是“监工”，而是“教练”，彻底消除了办公室政治。
+      </p>
+    </div>
+
+    <div class="card bento-2">
+      <div class="tack-red" style="background-color: #2d5da1;"></div>
+      <h3>精益软件开发</h3>
+      <p>
+        消除一切浪费（等待审批、不必要的会议）。<br><br>
+        <span class="highlight-marker">速度优于完美</span>：容忍一定程度的混乱以换取快速迭代。<br><br>
+        <strong>Andon Cord 机制</strong>：任何人都有权因 CI/CD 失败而“拉下安灯绳”停止生产线，鼓励对质量的即时反馈。
+      </p>
+    </div>
+
+    <div class="card bento-3">
+      <div class="tack-red" style="background-color: #e5e0d8;"></div>
+      <h3>全栈价值流</h3>
+      <p>
+        通过 Product Engineer 角色，消除从 PM -&gt; 设计师 -&gt; 前端 -&gt; 后端的漫长交接链条。<br><br>
+        这种极其扁平的高效价值流（Value Stream Mapping），必须匹配市场 <strong>第 90 分位</strong> 的顶级薪酬才能维持。
+      </p>
+    </div>
+
+    <div class="source-block">
+      Source: 7. 组织文化与精益方法论 | PostHog
+    </div>
+  </div>
+
+
+</body>
+</html>

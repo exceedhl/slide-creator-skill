@@ -1,165 +1,101 @@
 # TIMELINE (时间轴)
 
-**适用场景**：**严格限于有真实日期/年份权重**的历史沿革、年份里程碑、30-60-90 天路径规划。
-**不适用**：无时间刻度权重的阶段展示 → 用 PROCESS_FLOW。
+## 1. When to Use / When Not to Use
+**适用场景**：历史沿革、未来规划、里程碑事件、有真实日期/年份权重的 30-60-90 天路径。
+**不适用场景**：无时间刻度权重的阶段展示（应使用 PROCESS_FLOW）。**路由铁律**：时间轴上必须有明确的时间概念。
 
-> **路由铁律**：必须有真实日期/年份权重时用 TIMELINE；无时间刻度的"阶段1→阶段2→阶段3" → 用 PROCESS_FLOW。
-
-## 1. 组件结构与视觉规则
-
-水平或垂直的**轴线**贯穿整个组件，轴线上标注时间节点**圆点**，圆点两侧（或上下）排列**日期标签**和**内容卡片**。
-
+## 2. Component Contract (模式契约)
 **核心约束**：
-*   所有圆点必须**精确居中于轴线上**（圆心与线物理重合），长文本折行不得压缩或偏移圆点。
-*   必须存在至少一个 **Active 状态节点**（强调色），与其余节点形成差异。
-*   日期/标签与圆点、圆点与内容区之间必须有**对称的呼吸间距**。
-*   **水平变体**：轴线水平贯穿，上方放日期标签，下方放内容卡片（或交错上下）。
-*   **垂直变体**：轴线垂直贯穿，左侧放日期，右侧放内容。轴线用 `position: absolute` 锚定于死区中心。
-*   内容卡片 (`.content-card`) 是**通用内容插槽**，可承载列表、表格、嵌套卡片或纯文本。
-*   **表格对齐铁律**：当内容区采用贯通整行的表格时，表格**每一列宽度必须与上方对应时间节点列宽严格对齐**（通过共享 `grid-template-columns: repeat(N, 1fr)` 实现）。
+* 必须包含 `data-component="timeline"` 的外层容器。
+* 必须包含显式渲染的时间轴线（通过绝对定位或边框实现）。
+* 必须包含 `data-slot="milestone"` 容器，每个容器内必须有圆点、明确的时间戳 `data-date` 以及相关事件内容。
+* 必须存在至少一个 **Active 焦点节点**（带有 `data-state="active"`）。
+* 所有时间节点圆点必须**精确居中于轴线上**（圆心与线物理重合）。
+* 文字和日期必须是普通 HTML DOM，不能是 SVG。
 
-## 2. HTML 骨架模板
+## 3. Creative Freedom (创作空间)
+**允许变化的维度**：
+* **时间权重对齐**：时间间隔不等时，可以选择不均分宽度。例如跨度 1 年的节点间隔可以比跨度 1 个月的更宽。
+* **方向变体**：横向时间轴 `data-variant="horizontal"` 和纵向时间轴 `data-variant="vertical"` 均可。
+* **卡片排布**：内容卡片可以全部在轴线单侧，也可以在轴线上方和下方交错排布（交错能容纳更多高密度内容）。
+* **内容承载**：卡片内部可以嵌套图片、数据表格或指标数据。
 
-### 水平变体 (N=3 示例)
+**不可变化的维度**：
+* 必须出现年份、月份、日期等时间标志物。
+* 圆点必须锚定在轴线上，不能因为下方文本内容的撑高而发生偏移。
 
-**DOM 层级锚点**：
+## 4. Density Modes (信息密度规则)
+通过 `data-density` 调节密度：
+* **low (低密度)**：只标年份和 1 句事件短语，留白充裕。
+* **medium (中密度)**：年份 + 核心标题 + 1-2 行描述。
+* **high (高密度)**：节点呈上下交错排列，描述中可附带具体数据或次级列表。
 
-```
-.timeline-area             ← 挂载在 24x24 grid Body 区域
-  .timeline-axis           ← 水平轴线（absolute 定位）
-  .time-label              ← 日期标签（Grid 上方行）
-  .dot-container > .dot    ← 圆点（Grid 中间行，居中于轴线）
-  .content-card            ← 内容卡片（Grid 下方行）
-```
+## 5. HTML Exemplars (范例参考)
 
-**HTML：**
-
+### Exemplar A: Canonical (标准水平轴，下方排布卡片)
 ```html
-<div class="timeline-area" style="grid-column: 1/span 24; grid-row: 5/span 18;">
-  <!-- 水平轴线 -->
-  <div class="timeline-axis"></div>
+<div data-component="timeline" data-variant="horizontal" data-density="medium" style="grid-column: 1/span 24; grid-row: 5/span 18; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 60px 20px 1fr; position: relative;">
+  <!-- 轴线 -->
+  <div class="timeline-axis" style="position: absolute; height: 3px; background: var(--border-default); top: 68px; left: 15%; right: 15%; z-index: 1;"></div>
 
-  <!-- 日期标签行 -->
-  <div class="time-label"><span class="date">第 1-30 天</span><span class="phase">阶段名</span></div>
-  <div class="time-label"><span class="date">第 31-60 天</span><span class="phase">阶段名</span></div>
-  <div class="time-label"><span class="date">第 61-90 天</span><span class="phase">阶段名</span></div>
-
-  <!-- 圆点行 -->
-  <div class="dot-container"><div class="dot active"></div></div>
-  <div class="dot-container"><div class="dot"></div></div>
-  <div class="dot-container"><div class="dot"></div></div>
-
-  <!-- 内容卡片行 -->
-  <div class="content-card">
-    <h4>阶段目标</h4>
-    <p>详细内容</p>
+  <!-- 日期标签 -->
+  <div data-slot="date" class="time-label" style="grid-row: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 12px;">
+    <span class="date" style="color: var(--primary); font-size: 22px; font-weight: bold;">第 1-30 天</span>
+    <span class="phase" style="color: var(--text-muted); font-size: 13px;">初步阶段</span>
   </div>
-  <div class="content-card">
-    <h4>阶段目标</h4>
-    <p>详细内容</p>
+  <!-- 其他 2 个日期标签... -->
+
+  <!-- 轴线上的圆点 -->
+  <div data-slot="dot" class="dot-container" style="grid-row: 2; display: flex; justify-content: center; z-index: 2;">
+    <div data-state="active" class="dot" style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--accent);"></div>
   </div>
-  <div class="content-card">
-    <h4>阶段目标</h4>
-    <p>详细内容</p>
+  <!-- 其他 2 个圆点... -->
+
+  <!-- 内容卡片 -->
+  <div data-slot="milestone" class="content-card" style="grid-row: 3; padding: 20px; margin: 10px 10px 0; background: var(--bg-surface); border-top: 2px solid var(--primary);">
+    <h4 style="color: var(--primary);">阶段目标</h4>
+    <p style="color: var(--text-muted);">详细实施计划说明</p>
+  </div>
+  <!-- 其他 2 个内容卡片... -->
+</div>
+```
+
+### Exemplar B: Expressive (上下交错，非均等时间跨度)
+```html
+<div data-component="timeline" data-variant="horizontal-alternating" data-density="high" style="grid-column: 1/span 24; grid-row: 5/span 18; position: relative;">
+  <div class="timeline-axis" style="position: absolute; height: 4px; background: var(--border-default); top: 50%; left: 5%; right: 5%; transform: translateY(-50%);"></div>
+
+  <!-- 可以使用 flex 或绝对定位来制造不等距效果 -->
+  <!-- 上方节点 -->
+  <div data-slot="milestone" data-date="2020" style="position: absolute; left: 20%; top: 10%; width: 250px; text-align: center;">
+    <div data-slot="date" style="font-weight: bold; font-size: 24px;">2020</div>
+    <div class="card" style="border: 1px solid var(--border-default); padding: 15px; margin-top: 10px; background: white;">...</div>
+    <div data-slot="dot" style="position: absolute; bottom: -45px; left: 50%; transform: translateX(-50%); ..."></div>
+  </div>
+
+  <!-- 下方节点 -->
+  <div data-slot="milestone" data-date="2024" style="position: absolute; left: 60%; top: 52%; width: 250px; text-align: center;">
+    <div data-slot="dot" style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); ..."></div>
+    <div data-slot="date" style="font-weight: bold; font-size: 24px;">2024</div>
+    <div class="card" style="border: 1px solid var(--border-default); padding: 15px; margin-top: 10px; background: white;">...</div>
   </div>
 </div>
 ```
 
-**CSS：**
+## 6. Styling Hooks (样式钩子)
+*   **语义属性 (必须)**：`data-component="timeline"`, `data-slot="milestone|date|dot"`, `data-variant="horizontal|vertical|horizontal-alternating"`, `data-state="active|default"`, `data-density="low|medium|high"`, `data-date="时间串"`。
+*   **CSS Class 约定**：推荐使用 `.timeline-axis`, `.time-label`, `.dot`, `.content-card`。
+*   **几何变量**：轴线宽度应受控，且时间节点圆点应当使用边框与底色搭配的方式以显得有立体感或空心感。
 
-```css
-.timeline-area {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* N=3 */
-  grid-template-rows: 60px 20px 1fr;     /* 日期 | 圆点 | 内容 */
-  position: relative;
-}
+## 7. Failure Modes (典型失败模式与反例)
+*   ❌ **无时间权重误用**：纯粹用时间轴来表现“用户登录 -> 填写表单 -> 提交”，没有时间戳，应改为 PROCESS_FLOW。
+*   ❌ **圆点跑偏**：由于内容卡片文字极多，导致 Grid 的该列被挤宽或变高，圆点没有绝对居中压在线上。
+*   ❌ **视觉失衡**：在均分时间的形态下，部分节点内容特别长，导致时间轴挤在一起，留白不对称。
+*   ❌ **误导性时间间隔**：时间轴上写着 2020、2021、2026，但三者物理距离完全均等，产生视觉误导。
 
-/* 水平轴线：absolute 锚定在圆点行中央 */
-.timeline-axis {
-  position: absolute;
-  height: 3px;
-  background: var(--border-default);
-  top: 68px;        /* row1(60px) + row2半(10px) - 线高一半 */
-  left: 15%;
-  right: 15%;
-  z-index: 1;
-}
-
-/* 日期标签 */
-.time-label {
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 12px;
-}
-.time-label .date {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--primary);
-}
-.time-label .phase {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-/* 圆点 */
-.dot-container {
-  grid-row: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-.dot {
-  width: 14px;
-  height: 14px;
-  background: white;
-  border: 3px solid var(--primary);
-  border-radius: 50%;
-}
-.dot.active {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-
-/* 内容卡片 */
-.content-card {
-  grid-row: 3;
-  padding: 20px;
-  margin: 10px 10px 0;
-  border: 1px solid var(--border-default);
-  background: var(--bg-surface);
-  border-top: 2px solid var(--primary);
-}
-.content-card h4 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 8px 0;
-}
-.content-card p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
-}
-```
-
-### 垂直变体适配
-
-DOM 层级不变，CSS 替换：
-1. `.timeline-area` → `grid-template-columns: auto 20px 1fr; grid-template-rows: repeat(N, 1fr);`
-2. `.timeline-axis` → 改为垂直线：`width: 3px; height: auto; top/bottom: 15%; left: (列1宽 + 列2宽/2)`
-3. `.time-label` → `grid-column: 1`（左列），`.dot-container` → `grid-column: 2`，`.content-card` → `grid-column: 3`
-
-## 3. QA 验收条件
-
-* **C-TML-01**: 所有时间节点圆点是否精确居中于轴线上（圆心与轴线物理重合）？
-* **C-TML-02**: 圆点在长文本折行撑高容器时是否仍保持固定尺寸（未被压缩或偏移）？
-* **C-TML-03**: 日期/标签与圆点之间、圆点与内容区之间是否都存在对称的呼吸间距？
-* **C-TML-04**: 是否存在至少一个 Active 状态节点，且在视觉上与其余节点形成明显差异？
-* **C-TML-05**: 若内容区为贯通表格，每列宽度是否与上方对应时间节点列宽严格对齐？
+## 8. QA Checklist (QA 验收条件)
+*   [ ] **C-TML-01**: 组件是否具有 `data-component="timeline"` 以及完整的 `data-slot` 设置？
+*   [ ] **C-TML-02**: 所有时间节点的圆点是否精确居中于轴线上（圆心与线物理重合）？
+*   [ ] **C-TML-03**: 如果文本发生折行导致卡片变高，圆点和轴线是否依然保持原位？
+*   [ ] **C-TML-04**: 是否有至少一个节点使用 `data-state="active"` 并且颜色显著区别于其他节点？
+*   [ ] **C-TML-05**: 如果是采用表格对齐的方式，列宽是否与上方/左方对应的时间点一致，无错位？

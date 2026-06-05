@@ -8,75 +8,141 @@ Slide Creator is a skill used to convert Markdown text directly into neatly form
 
 - **Powerful Built-in Components**: Break away from monotonous plain text. It comes with over a dozen core formatting components frequently used in business reports, such as Matrix, Funnel, Process Flow, and Staircase. AI will automatically apply them based on the context of your outline.
 - **Strict Automated Detection (Automated QA)**: Worried about AI-generated text overlapping or overflowing the borders? We have a built-in automated layout inspector. Paired with formatting rules, the AI can achieve self-healing corrections by measuring layout overflows.
-- **Custom Styling**: From the classic minimalist "McKinsey Style" to the vibrant "Modern Business Style". All styles can be freely customized, or you can even build a dedicated theme for your brand.
+- **10 Rich Visual Styles**: Built-in support for 10 highly-polished design themes (e.g., Business/McKinsey, Research Report, Ethereal Glass, Sketch, Editorial Luxury, Swiss Editorial, Sakura Chroma, etc.) to match any presentation context.
+- **Interactive WYSIWYG Editor**: Features a local visual editor (via Tweakpane & Node.js HTTP server) that allows real-time modifications of text, fonts, colors, and layouts directly in the browser, with changes synced back to your local files.
 
 ---
 
-## 🎨 Gallery Showcases
+## 🎨 Supported Visual Styles & Gallery
 
-> All of the representations below were fully structured and rendered natively to HTML CSS via this Skill natively:
+Slide Creator supports **10 curated visual styles** out-of-the-box. Below are 7 representative styles generated using this skill. Click the **Live HTML** links to open the interactive slide decks, or click the screenshots to view them in detail:
 
-### 1. 2025 AI Development Report (2025_AI_Report)
-
-<table>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_01_slide-01.png"><img src="gallery/2025_AI_Report/slide_01_slide-01.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_02_slide-02.png"><img src="gallery/2025_AI_Report/slide_02_slide-02.png" width="100%" /></a></td>
-  </tr>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_03_slide-03.png"><img src="gallery/2025_AI_Report/slide_03_slide-03.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_04_slide-04.png"><img src="gallery/2025_AI_Report/slide_04_slide-04.png" width="100%" /></a></td>
-  </tr>
-</table>
-
-<br/>
-
-### 2. EV R&D Consulting Proposal (EV_RD_Consulting)
+### 1. Executive Dark (暗夜行政风)
+> Dark OLED backgrounds with subtle glowing borders. Designed for executive summaries, board meetings, and tech keynotes.
+> 🔗 [Live HTML Preview](gallery/styles/executive_dark/index.html)
 
 <table>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_01_page.png"><img src="gallery/EV_RD_Consulting/slide_01_page.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png"><img src="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_1.png"><img src="gallery/styles/executive_dark/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_2.png"><img src="gallery/styles/executive_dark/slide_2.png" width="100%" /></a></td>
   </tr>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_03_page.png"><img src="gallery/EV_RD_Consulting/slide_03_page.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png"><img src="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_3.png"><img src="gallery/styles/executive_dark/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_4.png"><img src="gallery/styles/executive_dark/slide_4.png" width="100%" /></a></td>
   </tr>
 </table>
 
-<br/>
-
-### 3. PostHog Compensation Guide (PostHog_Salary)
+### 2. Product Launch (产品发布风)
+> Apple Keynote-inspired style. Characterized by 80px giant typography, full-bleed images, dark backgrounds, and plenty of breathing room.
+> 🔗 [Live HTML Preview](gallery/styles/product_launch/index.html)
 
 <table>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_01_slide-01.png"><img src="gallery/PostHog_Salary/slide_01_slide-01.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_02_slide-02.png"><img src="gallery/PostHog_Salary/slide_02_slide-02.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_1.png"><img src="gallery/styles/product_launch/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_2.png"><img src="gallery/styles/product_launch/slide_2.png" width="100%" /></a></td>
   </tr>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_03_slide-03.png"><img src="gallery/PostHog_Salary/slide_03_slide-03.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_04_slide-04.png"><img src="gallery/PostHog_Salary/slide_04_slide-04.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_3.png"><img src="gallery/styles/product_launch/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_4.png"><img src="gallery/styles/product_launch/slide_4.png" width="100%" /></a></td>
   </tr>
 </table>
 
-<br/>
-
-### 4. Scrum vs Flow Comparison (ScrumVsFlow)
+### 3. Soft Structure (柔性 SaaS 风)
+> Soft light-gray cards with delicate diffuse shadows and subtle accent gradients. Tailored for software products, startups, and investor pitches.
+> 🔗 [Live HTML Preview](gallery/styles/soft_structure/index.html)
 
 <table>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_01_slide-cover.png"><img src="gallery/ScrumVsFlow/slide_01_slide-cover.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_02_slide-origins.png"><img src="gallery/ScrumVsFlow/slide_02_slide-origins.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_1.png"><img src="gallery/styles/soft_structure/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_2.png"><img src="gallery/styles/soft_structure/slide_2.png" width="100%" /></a></td>
   </tr>
   <tr>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_03_slide-economics.png"><img src="gallery/ScrumVsFlow/slide_03_slide-economics.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_04_slide-cynefin.png"><img src="gallery/ScrumVsFlow/slide_04_slide-cynefin.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_3.png"><img src="gallery/styles/soft_structure/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_4.png"><img src="gallery/styles/soft_structure/slide_4.png" width="100%" /></a></td>
   </tr>
 </table>
 
-<br/>
+### 4. Swiss Editorial (瑞士编辑风)
+> Brutalist design style focusing on grids, massive typography, asymmetric column layout, heavy black grid lines, and strong red highlights.
+> 🔗 [Live HTML Preview](gallery/styles/swiss_editorial/index.html)
 
-> *Note: The screenshots above are not full panoramas, but only show the first few representative layouts as samples. Since the skill directly generates standard HTML/CSS, the placeholder images in the showcase can be replaced pixel-by-pixel by the AI after formatting is complete.*
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_1.png"><img src="gallery/styles/swiss_editorial/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_2.png"><img src="gallery/styles/swiss_editorial/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_3.png"><img src="gallery/styles/swiss_editorial/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_4.png"><img src="gallery/styles/swiss_editorial/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 5. Editorial Luxury (暖调奢华风)
+> Elegantly printed look with warm paper textures, hairline dividers, and serif headers. Best for luxury brand pitches and narrative decks.
+> 🔗 [Live HTML Preview](gallery/styles/editorial_luxury/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_1.png"><img src="gallery/styles/editorial_luxury/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_2.png"><img src="gallery/styles/editorial_luxury/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_3.png"><img src="gallery/styles/editorial_luxury/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_4.png"><img src="gallery/styles/editorial_luxury/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 6. Sketch (手绘涂鸦风)
+> Hand-drawn sketchy borders, hard shadows, whiteboard-style icons, hand-written fonts, and crumpled paper texture. Ideal for brainstorming and creative workshops.
+> 🔗 [Live HTML Preview](gallery/styles/sketch/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_1.png"><img src="gallery/styles/sketch/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_2.png"><img src="gallery/styles/sketch/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_3.png"><img src="gallery/styles/sketch/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_4.png"><img src="gallery/styles/sketch/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 7. Sakura Chroma (复古日系风)
+> Cream paper backgrounds with JIS stamp-style logos, retro colorful stripes, and equalizer-inspired visual structures.
+> 🔗 [Live HTML Preview](gallery/styles/sakura_chroma/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_1.png"><img src="gallery/styles/sakura_chroma/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_2.png"><img src="gallery/styles/sakura_chroma/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_3.png"><img src="gallery/styles/sakura_chroma/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_4.png"><img src="gallery/styles/sakura_chroma/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+---
+
+## 🖥️ Interactive WYSIWYG Editor
+
+Slide Creator now comes with a local visual editor that bridges the gap between AI generation and human design preferences.
+
+![Interactive WYSIWYG Editor](gallery/editor_screenshot.png)
+
+### Key Editor Features:
+- **Real-time Slide Tweaking**: Click on any element (paragraphs, lists, cards, backgrounds) to adjust typography, margins, colors, alignments, borders, and dimensions in real-time.
+- **Direct Content Editing**: Double-click or use the textarea inputs to edit slide text content, and see the layout adapt dynamically.
+- **Global & Local Style Control**: Modify local overrides (inline styles), global CSS class overrides, or change global CSS variables (like theme color tokens) instantly.
+- **Auto-Sync to Files**: Save changes (via `Ctrl+S` or the Save button) to write the modified HTML and scoped styles directly back to your local files.
+- **PDF Export**: Built-in export utilities let you print or export your finished deck directly to a PDF.
+
+### Launching the Editor:
+After assembling your slide deck, run the following command in your terminal to start the local editor server:
+```bash
+node scripts/editor/index.js <path-to-assembled-html-file>
+```
+The server will automatically open your default browser at `http://localhost:5173`.
 
 ---
 
@@ -116,4 +182,4 @@ When you visually observe that there is too much text severely squeezed on a cer
 
 ## 🤖 Supported Models Compatibility 
 
-This skill currently performs fairly well on **Gemini 3.1**, **GLM 5.1**, and **Claude 3.6**. You can expect overall satisfactory results within 2-3 dialogue turns. **Gemini 3.1 Pro** performs relatively excellently.
+This skill currently performs fairly well on **Gemini 3.5 Flash**, **Gemini 3.1**, **GLM 5.1**, and **Claude 3.6**. You can expect overall satisfactory results within 2-3 dialogue turns. **Gemini 3.5 Flash** and **Gemini 3.1 Pro** perform relatively excellently.

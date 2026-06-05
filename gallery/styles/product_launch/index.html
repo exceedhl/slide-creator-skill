@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHog Product Launch</title>
+    
+    <style>
+        body {
+            background-color: #f0f0f0; /* Default background outside slides */
+            padding: 40px 0;           /* Top/bottom padding for the whole page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;       /* Center slides horizontally */
+            gap: 40px;                 /* Gap between slides */
+            margin: 0;
+        }
+        .slide {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: add a shadow to make slides pop */
+            margin: 0 !important;      /* Override individual slide margins */
+        }
+/* Global Boilerplate Injected */
+
+    :root {
+      --border-default: #E2E8F0;
+    }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      margin: 0;
+      --slide-padding: 50px 60px;
+      --gap: 15px;
+      --font-base: 18px;
+      padding: var(--slide-padding);
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(24, 1fr);
+      gap: var(--gap);
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      /* removed background-color: #ffffff; to allow individual slides to define their own backgrounds */
+    }
+
+/* Slide Specific CSS */
+
+/* from: page_01.html (scoped) */
+#slide-auto-1593695688{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1593695688{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1593695688.slide,#slide-auto-1593695688.slide *,#slide-auto-1593695688.slide *::before,#slide-auto-1593695688.slide *::after{box-sizing:border-box}
+#slide-auto-1593695688.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1593695688 .card{border-radius:0px;border:none;box-shadow:none}
+
+/* from: page_02.html (scoped) */
+#slide-auto-1622324839{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1622324839{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1622324839.slide,#slide-auto-1622324839.slide *,#slide-auto-1622324839.slide *::before,#slide-auto-1622324839.slide *::after{box-sizing:border-box}
+#slide-auto-1622324839.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1622324839 .card{border-radius:0px;border:none;box-shadow:none}
+
+/* from: page_03.html (scoped) */
+#slide-auto-1650953990{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1650953990{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1650953990.slide,#slide-auto-1650953990.slide *,#slide-auto-1650953990.slide *::before,#slide-auto-1650953990.slide *::after{box-sizing:border-box}
+#slide-auto-1650953990.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1650953990 .card{border-radius:0px;border:none;box-shadow:none}
+
+/* from: page_04.html (scoped) */
+#slide-auto-1679583141{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1679583141{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1679583141.slide,#slide-auto-1679583141.slide *,#slide-auto-1679583141.slide *::before,#slide-auto-1679583141.slide *::after{box-sizing:border-box}
+#slide-auto-1679583141.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1679583141 .card{border-radius:0px;border:none;box-shadow:none}
+
+/* from: page_05.html (scoped) */
+#slide-auto-1708212292{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1708212292{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1708212292.slide,#slide-auto-1708212292.slide *,#slide-auto-1708212292.slide *::before,#slide-auto-1708212292.slide *::after{box-sizing:border-box}
+#slide-auto-1708212292.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1708212292 .card{border-radius:0px;border:none;box-shadow:none}
+
+/* from: page_06.html (scoped) */
+#slide-auto-1736841443{--primary: #FFFFFF;--accent: #0071E3;--bg-base: #000000;--bg-surface-light: #1C1C1E;--bg-surface: #2C2C2E;--text-main: #F5F5F7;--text-light: #86868B;--grid-line: #3A3A3C}
+#slide-auto-1736841443{background-color:var(--bg-base);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif}
+#slide-auto-1736841443.slide,#slide-auto-1736841443.slide *,#slide-auto-1736841443.slide *::before,#slide-auto-1736841443.slide *::after{box-sizing:border-box}
+#slide-auto-1736841443.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--font-base: 20px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);overflow:hidden;position:relative}
+#slide-auto-1736841443 .card{border-radius:0px;border:none;box-shadow:none}
+
+    </style>
+</head>
+<body>
+
+<!-- from: page_01.html -->
+<div id="slide-auto-1593695688" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 14; grid-row: 1 / span 24; display: flex; flex-direction: column; justify-content: center;">
+    <h1 style="font-size: 64px; font-weight: 600; color: var(--primary); letter-spacing: -0.02em; margin: 0 0 20px 0; line-height: 1.1;">PostHog 组织操作系统</h1>
+    <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0;">在激进透明与精益敏捷中的机制创新</h3>
+  </div>
+  <div style="grid-column: 15 / span 10; grid-row: 1 / span 24; margin: -50px -60px -50px 0;">
+    <img src="cover_system_1779093528715.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+</div>
+
+<!-- from: page_02.html -->
+<div id="slide-auto-1622324839" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 10; grid-row: 1 / span 24; margin: -50px 0 -50px -60px;">
+    <img src="formula_math_1779093543901.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div style="grid-column: 12 / span 13; grid-row: 2 / span 22; display: flex; flex-direction: column; justify-content: center;">
+    <h2 style="font-size: 40px; font-weight: 500; color: var(--primary); margin: 0 0 40px 0;">薪酬计算公式的四个维度</h2>
+    <div style="font-size: 28px; font-weight: 400; color: var(--text-main); line-height: 1.6;">
+      <p style="margin: 0 0 20px 0;"><strong style="color: var(--accent);">01. 市场基准 (Benchmark)</strong><br><span style="font-size: 20px; color: var(--text-light); font-weight: 300;">锚定旧金山第90分位，通用基准参考 $262,000。</span></p>
+      <p style="margin: 0 0 20px 0;"><strong style="color: var(--accent);">02. 级别因子 (Level Modifier)</strong><br><span style="font-size: 20px; color: var(--text-light); font-weight: 300;">扁平化职级：中级、高级、专家级。默认切入点为成熟阶段。</span></p>
+      <p style="margin: 0 0 20px 0;"><strong style="color: var(--accent);">03. 步长因子 (Step Modifier)</strong><br><span style="font-size: 20px; color: var(--text-light); font-weight: 300;">0.95 - 1.04，解决"不晋升就无法加薪"痛点，为管理者提供微调杠杆。</span></p>
+      <p style="margin: 0 0 0 0;"><strong style="color: var(--accent);">04. 位置因子 (Location Factor)</strong><br><span style="font-size: 20px; color: var(--text-light); font-weight: 300;">双保底政策，美国0.8 / 全球0.6，实现全球化套利与绝对吸引力。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- from: page_03.html -->
+<div id="slide-auto-1650953990" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 24; grid-row: 2 / span 3;">
+    <h2 style="font-size: 40px; font-weight: 500; color: var(--primary); margin: 0;">全球化套利：位置因子的双保底政策</h2>
+  </div>
+  <div style="grid-column: 1 / span 14; grid-row: 6 / span 18;">
+    <div style="font-size: 24px; font-weight: 400; color: var(--text-main); margin-bottom: 24px;">美国境内下限：0.8</div>
+    <div style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin-bottom: 40px;">即便员工居住在生活成本较低的州（如缅因州），薪资最低也是旧金山基准的80%。</div>
+    <div style="font-size: 24px; font-weight: 400; color: var(--text-main); margin-bottom: 24px;">全球其他地区下限：0.6</div>
+    <div style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin-bottom: 40px;">最具颠覆性的设定。无论员工身处何地，最低薪资为旧金山基准的60%。在低生活成本国家获得极高的购买力溢价。</div>
+    <div class="card" style="background: var(--bg-surface); padding: 24px; border-radius: var(--card-radius);">
+       <h3 style="font-size: 24px; font-weight: 400; color: var(--primary); margin: 0 0 16px 0;">案例模拟（$200k基准）</h3>
+       <p style="font-size: 20px; color: var(--text-light); margin: 0 0 8px 0;">场景A (旧金山): $200,000 × 1.0 = <span style="color: var(--text-main);">$200,000</span></p>
+       <p style="font-size: 20px; color: var(--text-light); margin: 0 0 8px 0;">场景B (伦敦, 系数0.75): $200,000 × 0.75 = <span style="color: var(--text-main);">$150,000</span></p>
+       <p style="font-size: 20px; color: var(--text-light); margin: 0;">场景C (新德里, 触发保底0.6): $200,000 × 0.6 = <span style="color: var(--accent);">$120,000</span></p>
+    </div>
+  </div>
+  <div style="grid-column: 16 / span 9; grid-row: 6 / span 18; margin: 0 -60px -50px 0;">
+    <img src="globe_network_1779093556259.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+</div>
+
+<!-- from: page_04.html -->
+<div id="slide-auto-1679583141" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 10; grid-row: 1 / span 24; margin: -50px 0 -50px -60px;">
+    <img src="chart_multiplier_1779093569701.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div style="grid-column: 12 / span 13; grid-row: 3 / span 20; display: flex; flex-direction: column;">
+    <h2 style="font-size: 40px; font-weight: 500; color: var(--primary); margin: 0 0 20px 0;">基于产品矩阵的销售佣金</h2>
+    <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0 0 40px 0;">推动客户从单一工具使用者转化为平台深度用户。引入基于“付费产品数量”的乘数机制，支持“一体化平台”战略。</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 16px; width: 100%;">
+      <div style="font-size: 16px; color: var(--text-light); padding-bottom: 8px; border-bottom: 1px solid var(--grid-line);">购买产品数</div>
+      <div style="font-size: 16px; color: var(--text-light); padding-bottom: 8px; border-bottom: 1px solid var(--grid-line);">最终乘数</div>
+      <div style="font-size: 16px; color: var(--text-light); padding-bottom: 8px; border-bottom: 1px solid var(--grid-line);">行为影响分析</div>
+      
+      <div style="font-size: 24px; color: var(--text-main); padding: 12px 0;">1个</div>
+      <div style="font-size: 24px; color: #ff453a; padding: 12px 0; font-weight: 500;">0.7x</div>
+      <div style="font-size: 16px; color: var(--text-light); padding: 12px 0; line-height: 1.4;">惩罚机制。仅销售单一产品面临高流失风险，强力抑制单点销售。</div>
+
+      <div style="font-size: 24px; color: var(--text-main); padding: 12px 0;">2个</div>
+      <div style="font-size: 24px; color: var(--text-main); padding: 12px 0; font-weight: 500;">0.9x</div>
+      <div style="font-size: 16px; color: var(--text-light); padding: 12px 0; line-height: 1.4;">接近标准佣金。鼓励销售人员至少进行一次交叉销售。</div>
+
+      <div style="font-size: 24px; color: var(--text-main); padding: 12px 0;">3个</div>
+      <div style="font-size: 24px; color: var(--accent); padding: 12px 0; font-weight: 500;">1.1x</div>
+      <div style="font-size: 16px; color: var(--text-light); padding: 12px 0; line-height: 1.4;">奖励区间。开始获得溢价，激励销售人员推销解决方案组合。</div>
+
+      <div style="font-size: 24px; color: var(--text-main); padding: 12px 0;">5个</div>
+      <div style="font-size: 24px; color: #32d74b; padding: 12px 0; font-weight: 500;">1.5x</div>
+      <div style="font-size: 16px; color: var(--text-light); padding: 12px 0; line-height: 1.4;">顶级激励。客户粘性极高流失率极低，公司支付50%额外佣金。</div>
+    </div>
+  </div>
+</div>
+
+<!-- from: page_05.html -->
+<div id="slide-auto-1708212292" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 14; grid-row: 3 / span 20; display: flex; flex-direction: column;">
+    <h2 style="font-size: 40px; font-weight: 500; color: var(--primary); margin: 0 0 20px 0;">股权即所有权：打破金手铐</h2>
+    <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0 0 40px 0;">在硅谷，期权常被用作留住员工的“金手铐”。PostHog反其道而行之，赋予员工真正的所有权感。</p>
+
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0 0 12px 0;">颠覆性的10年行权窗口</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">相比行业的90天限制，离职员工拥有长达10年的期权行权窗口。彻底消除离职时的财务压力，保留其在公司创造的价值份额。</p>
+    </div>
+
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0 0 12px 0;">人性化双重加速归属</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">若公司控制权变更且员工被迫离职，所有未归属的期权将立即全部归属，提供极强的降落伞保护。</p>
+    </div>
+
+    <div>
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--accent); margin: 0 0 12px 0;">做离职后的第一位投资人</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">若员工在职满2年后离职创立非竞争公司，PostHog承诺成为其第一位投资者，吸引极具野心的创始人精神人才。</p>
+    </div>
+  </div>
+  <div style="grid-column: 16 / span 9; grid-row: 1 / span 24; margin: -50px -60px -50px 0;">
+    <img src="unlock_future_1779093588539.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+</div>
+
+<!-- from: page_06.html -->
+<div id="slide-auto-1736841443" class="slide" style="--gap: 16px; gap: var(--gap);">
+  <div style="grid-column: 1 / span 10; grid-row: 1 / span 24; margin: -50px 0 -50px -60px;">
+    <img src="lean_nodes_1779093610145.png" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+  <div style="grid-column: 12 / span 13; grid-row: 3 / span 20; display: flex; flex-direction: column;">
+    <h2 style="font-size: 40px; font-weight: 500; color: var(--primary); margin: 0 0 40px 0;">小团队运作与精益开发</h2>
+    <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0 0 40px 0;">去中心化结构和TPS精益思想的软件行业适配，一切为了加速价值流动。</p>
+
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0 0 12px 0;">去中心化与经理权限解耦</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">每个小团队像初创公司一样运作。经理无权决定下属薪酬，转变为服务团队的“教练”，消除办公室政治。</p>
+    </div>
+
+    <div style="margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0 0 12px 0;">安灯绳机制 (Andon Cord)</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">任何工程师都有权由CI/CD流水线的失败来“停止生产线”，鼓励对质量的即时反馈与修复。</p>
+    </div>
+
+    <div>
+      <h3 style="font-size: 28px; font-weight: 400; color: var(--text-main); margin: 0 0 12px 0;">价值流映射与极简交接</h3>
+      <p style="font-size: 20px; font-weight: 300; color: var(--text-light); line-height: 1.4; margin: 0;">通过全栈产品工程师负责设计到部署全过程，消除产品经理到后端的漫长交接链条，这也是高薪酬的直接支撑。</p>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

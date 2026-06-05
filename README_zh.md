@@ -8,76 +8,142 @@ Slide Creator skill 用于将Markdown文本直接转化为格式工整、排版�
 
 - **强大的组件库 (Components)**：打破单调的纯文本，内置矩阵 (Matrix)、漏斗 (Funnel)、流程树 (Process Flow)、阶梯式 (Staircase) 等商业报告中高频使用的十几款核心排版组件。AI 会根据你的大纲语境自动调配。
 - **严谨的自动化检测 (Automated QA)**：害怕 AI 生成的排版文字重叠或者跑出框外？遇到此类问题，我们内置了自动排版巡检器。配合排版规范，AI 能够通过测量布局溢出实现问题自愈修正。
-- **自定义风格 (Custom Styling)**：从经典的极简“麦肯锡风”，到色彩鲜明的“现代商务风”。所有的样式都能自由定制，甚至可为你的品牌打造自己专属的主题。
+- **10 种精美视觉风格 (10 Visual Styles)**：内置 10 套精心雕琢的设计主题（如商务经典/麦肯锡、行研报告、空灵玻璃、手绘涂鸦、暖调奢华、瑞士编辑等），完美契合各类演示场景。
+- **WYSIWYG 交互式可视化编辑器**：内置本地可视化编辑器（基于 Tweakpane 与 Node.js 服务器），支持在浏览器中实时微调文案、字号、颜色和布局，修改结果会自动写回本地 HTML 文件。
+
+---
+
+## 🎨 支持的视觉风格与展示案例
+
+Slide Creator 支持 **10 种精美的视觉风格** 开箱即用。以下是使用该技能生成的 7 种代表性风格，点击 **在线网页预览** 可直接在浏览器中浏览交互式幻灯片，或点击图片查看高清截图：
+
+### 1. Executive Dark (暗夜行政风)
+> 极具科技感的 OLED 纯黑底板搭配精致发光的卡片边框。非常适用于高管汇报、董事会议 and 前沿科技演讲。
+> 🔗 [在线网页预览](gallery/styles/executive_dark/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_1.png"><img src="gallery/styles/executive_dark/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_2.png"><img src="gallery/styles/executive_dark/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_3.png"><img src="gallery/styles/executive_dark/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/executive_dark/slide_4.png"><img src="gallery/styles/executive_dark/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 2. Product Launch (产品发布风)
+> 苹果新品发布会（Keynote）极简美学。特色为 80px 超大号字重排版、全出血巨幅配图、深色背景以及舒畅的呼吸留白。
+> 🔗 [在线网页预览](gallery/styles/product_launch/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_1.png"><img src="gallery/styles/product_launch/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_2.png"><img src="gallery/styles/product_launch/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_3.png"><img src="gallery/styles/product_launch/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/product_launch/slide_4.png"><img src="gallery/styles/product_launch/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 3. Soft Structure (柔性 SaaS 风)
+> 浅灰白色系柔和卡片，搭配精细的弥散阴影和低饱和度渐变点缀。非常适合软件产品介绍、SaaS 演讲以及初创团队的 Pitch Deck。
+> 🔗 [在线网页预览](gallery/styles/soft_structure/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_1.png"><img src="gallery/styles/soft_structure/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_2.png"><img src="gallery/styles/soft_structure/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_3.png"><img src="gallery/styles/soft_structure/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/soft_structure/slide_4.png"><img src="gallery/styles/soft_structure/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 4. Swiss Editorial (瑞士编辑风)
+> 粗野主义排版美学。强调严密的网格排版系统、不对称分栏、极粗的纯黑网格线以及极度克制的纯红高亮点缀。
+> 🔗 [在线网页预览](gallery/styles/swiss_editorial/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_1.png"><img src="gallery/styles/swiss_editorial/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_2.png"><img src="gallery/styles/swiss_editorial/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_3.png"><img src="gallery/styles/swiss_editorial/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/swiss_editorial/slide_4.png"><img src="gallery/styles/swiss_editorial/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 5. Editorial Luxury (暖调奢华风)
+> 带有暖色纸质纹理、极细排版分割线和衬线体排版。专为奢侈品行业报告、独立品牌叙事而设计。
+> 🔗 [在线网页预览](gallery/styles/editorial_luxury/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_1.png"><img src="gallery/styles/editorial_luxury/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_2.png"><img src="gallery/styles/editorial_luxury/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_3.png"><img src="gallery/styles/editorial_luxury/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/editorial_luxury/slide_4.png"><img src="gallery/styles/editorial_luxury/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 6. Sketch (手绘涂鸦风)
+> 粗糙的手绘风格边框、硬投影、白板式简笔图标、手写字体以及褶皱纸张质感。极度适用于头脑风暴、创意工坊与自由风格的讨论。
+> 🔗 [在线网页预览](gallery/styles/sketch/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_1.png"><img src="gallery/styles/sketch/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_2.png"><img src="gallery/styles/sketch/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_3.png"><img src="gallery/styles/sketch/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sketch/slide_4.png"><img src="gallery/styles/sketch/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
+
+### 7. Sakura Chroma (复古日系风)
+> 温暖的奶油色纸底，配以复古的彩虹斑斓边带、JIS印章图腾以及均衡器效果的数据卡片框架。
+> 🔗 [在线网页预览](gallery/styles/sakura_chroma/index.html)
+
+<table>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_1.png"><img src="gallery/styles/sakura_chroma/slide_1.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_2.png"><img src="gallery/styles/sakura_chroma/slide_2.png" width="100%" /></a></td>
+  </tr>
+  <tr>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_3.png"><img src="gallery/styles/sakura_chroma/slide_3.png" width="100%" /></a></td>
+    <td width="50%"><a target="_blank" href="gallery/styles/sakura_chroma/slide_4.png"><img src="gallery/styles/sakura_chroma/slide_4.png" width="100%" /></a></td>
+  </tr>
+</table>
 
 ---
 
 
-## 🎨 Gallery 展示案例
+## 🖥️ WYSIWYG 交互式可视化编辑器
 
-> 以下所有内容均为该 Skill 独立处理结构化并直接生成 HTML 渲染的结果：
+Slide Creator 现在内置了本地可视化编辑器，极大地缩短了 AI 生成与人类个性化微调之间的距离。
 
-### 1. 2025 AI 发展报告 (2025_AI_Report)
+![WYSIWYG 交互式可视化编辑器](gallery/editor_screenshot.png)
 
-<table>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_01_slide-01.png"><img src="gallery/2025_AI_Report/slide_01_slide-01.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_02_slide-02.png"><img src="gallery/2025_AI_Report/slide_02_slide-02.png" width="100%" /></a></td>
-  </tr>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_03_slide-03.png"><img src="gallery/2025_AI_Report/slide_03_slide-03.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/2025_AI_Report/slide_04_slide-04.png"><img src="gallery/2025_AI_Report/slide_04_slide-04.png" width="100%" /></a></td>
-  </tr>
-</table>
+### 编辑器核心功能：
+- **实时元素微调**：点击幻灯片上的任意元素（段落、列表、卡片、背景图等），即可在右侧面板实时调节字号、边距、颜色、对齐、边框以及网格尺寸。
+- **直观文本修改**：在内容区域的文本框中直接编辑文案，幻灯片会即时自适应排版。
+- **全局与局部控制**：支持局部覆盖（内联样式）、全局 CSS 类覆盖，或直接调整全局 CSS 变量（如主题色调代币）。
+- **文件自动同步**：通过快捷键 `Ctrl+S` 或点击保存按钮，可将修改直接写回本地 HTML 文件。
+- **PDF 导出**：内置演示与导出工具，支持将幻灯片一键输出为 PDF。
 
-<br/>
-
-### 2. EV 研发咨询方案 (EV_RD_Consulting)
-
-<table>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_01_page.png"><img src="gallery/EV_RD_Consulting/slide_01_page.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png"><img src="gallery/EV_RD_Consulting/slide_02_slide-auto--1127084742.png" width="100%" /></a></td>
-  </tr>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_03_page.png"><img src="gallery/EV_RD_Consulting/slide_03_page.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png"><img src="gallery/EV_RD_Consulting/slide_04_slide-auto--446282495.png" width="100%" /></a></td>
-  </tr>
-</table>
-
-<br/>
-
-### 3. PostHog 薪资指南 (PostHog_Salary)
-
-<table>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_01_slide-01.png"><img src="gallery/PostHog_Salary/slide_01_slide-01.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_02_slide-02.png"><img src="gallery/PostHog_Salary/slide_02_slide-02.png" width="100%" /></a></td>
-  </tr>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_03_slide-03.png"><img src="gallery/PostHog_Salary/slide_03_slide-03.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/PostHog_Salary/slide_04_slide-04.png"><img src="gallery/PostHog_Salary/slide_04_slide-04.png" width="100%" /></a></td>
-  </tr>
-</table>
-
-<br/>
-
-### 4. Scrum vs Flow 效率对比 (ScrumVsFlow)
-
-<table>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_01_slide-cover.png"><img src="gallery/ScrumVsFlow/slide_01_slide-cover.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_02_slide-origins.png"><img src="gallery/ScrumVsFlow/slide_02_slide-origins.png" width="100%" /></a></td>
-  </tr>
-  <tr>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_03_slide-economics.png"><img src="gallery/ScrumVsFlow/slide_03_slide-economics.png" width="100%" /></a></td>
-    <td width="50%"><a target="_blank" href="gallery/ScrumVsFlow/slide_04_slide-cynefin.png"><img src="gallery/ScrumVsFlow/slide_04_slide-cynefin.png" width="100%" /></a></td>
-  </tr>
-</table>
-
-<br/>
-
-> *注：上述截图并非全景，仅抽样展示前几张代表性布局。由于技能直接生成标准的 HTML/CSS，展示中涉及的占位图片均可在完成排版后由大模型按像素替换。*
+### 启动编辑器方式：
+在生成并组装好幻灯片文件后，在终端中执行以下命令启动本地编辑器服务：
+```bash
+node scripts/editor/index.js <组装后的HTML文件路径>
+```
+服务启动后会自动在浏览器中打开 `http://localhost:5173`。
 
 ---
 
@@ -124,5 +190,5 @@ AI 即会按照 `SKILL.md` 指南，逐页进行栅格尺寸的计算和生成�
 
 
 ## 🤖 模型兼容性推荐 (Supported Models)
-
-本技能在 **Gemini 3.1**, **GLM 5.1**, 以及 **Claude 3.6** 上目前表现都还不错，2-3轮对话可以得到整体满意的结果。**Gemini 3.1 Pro**表现相对优秀。
+ 
+本技能在 **Gemini 3.5 Flash**, **Gemini 3.1**, **GLM 5.1**, 以及 **Claude 3.6** 上目前表现都还不错，2-3轮对话可以得到整体满意的结果。**Gemini 3.5 Flash** 和 **Gemini 3.1 Pro** 表现相对优秀。

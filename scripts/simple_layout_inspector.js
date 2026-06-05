@@ -153,6 +153,7 @@ async function checkWhitespace(page, slideId) {
     }, slideId);
 }
 
+
 /**
  * Generates and saves the Markdown report.
  */
@@ -190,7 +191,9 @@ function generateReport(htmlPath, issues) {
 
         if (!hasFindings && !hasImages) return;
 
-        content += `\n### ${item.slideId}\n`;
+        if (hasFindings || hasImages) {
+            content += `\n### ${item.slideId}\n`;
+        }
 
         if (s.overflowElements.length > 0) {
             content += `**ℹ️ Overflow Measurement** (informational):\n`;

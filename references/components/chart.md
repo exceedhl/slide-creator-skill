@@ -1,58 +1,86 @@
-# CHART (动态图表) 组件参考 (ECharts)
+# CHART (动态图表)
 
-**适用场景**：数据可视化展示，包括趋势分析、结构占比、多维对比等需要动态图表呈现的场景。
+## 1. When to Use / When Not to Use
+**适用场景**：数据趋势分析、结构占比、多维对比等可视化场景。
+**图表选择指南 (Chart Choosing Guide)**：
+* 趋势 (Trend) → 折线图 (`line`)，或平滑曲线。
+* 排名/对比 (Ranking/Comparison) → 柱状图 (`bar`) 或条形图 (`horizontal bar`)。
+* 结构占比 (Part-to-whole) → 堆叠柱状图 (`stacked-bar`)，避免使用难以比较面积的饼图，若必须使用则用环形图 (`pie` 且配置 `radius`)。
+* 差异/构成演变 (Variance) → 瀑布图 (`waterfall`)。
+* 相关性/投资组合 (Correlation/Portfolio) → 散点图/气泡图 (`scatter`/`bubble`)。
+* 热力/密集分布 → 热力图 (`heatmap`)。
+**不适用场景**：只有 1-2 个数据点（应直接使用极大字号的数字强调），非定量关系的逻辑关系（应使用 PROCESS_FLOW 等）。
 
-## 1. 组件结构与形状描述 (Structure & Shape)
+## 2. Component Contract (模式契约)
+**核心约束**：
+* 必须包含 `data-component="chart"` 外层容器。
+* 容器必须有明确的物理边界和高度，不得默认 100% 塌缩。
+* 所有图表必须基于极简数据可视化抽象规则：**绝不硬编码品牌 HEX 色值**。
+* 在同一幻灯片存在多个图表时，必须关闭动画 `animation: false` 提升性能。
+* 在初始化配置时，必须在根节点强制显性覆盖 `color` 数组为全局 CSS 变量提取的值。
+* 视图防切裁：`grid: { containLabel: true }` 必须开启。
 
-图表组件是一个由外层容器承载的 ECharts 实例。它的视觉形态完全在 ECharts `option` 内定义，但外围的"画布"必须是一个有明确物理边界的矩形区域。该矩形区域内部自上而下由三个逻辑带组成：**顶部图例带 (Legend Band)**、**中央绘图区 (Plot Area)**、**底部坐标轴标签带 (Axis Label Band)**。
+## 3. Creative Freedom (创作空间)
+**允许变化的维度**：
+* **注释与辅助线 (Chart Annotation)**：支持在 ECharts 内添加 `markLine` (用于 Benchmark/平均值) 和 `markPoint` (用于高亮最大值或异常点)。
+* **多图表组合**：允许并列或嵌套多个图表（如左右对比的双图表），通过 `data-slot="chart-container"` 区分。
+* **组合图 (Combo Chart)**：允许 `bar` 与 `line` 在同一直角坐标系中混排展示。
 
-### 支持的图表类型
+**不可变化的维度**：
+* 必须剔除坐标轴视觉噪音（隐藏无意义的主轴线和刻度线）。
+* 提示框 (Tooltip) 必须处理为无多余边框的黑盒样式。
 
-| `chartType` 参数 | ECharts `series.type` 类型 | 备注 / Notes |
-|-------------|----------------------|-------|
-| bar | `bar` | 默认为垂直柱状图 |
-| line | `line` | 启用 `smooth: true` 以获得平滑曲线 |
-| pie | `pie` | 环形图变体: 配置 `radius: ['40%', '70%']` |
-| stacked-bar | `bar` | 对于每个数据系列，添加 `stack: 'total'` 堆叠标识 |
-| radar | `radar` | 需要提供 `radar` 的多维指示器配置 |
+## 4. Density Modes (信息密度规则)
+通过 `data-density` 调节图表辅件的丰富度：
+* **low (低密度)**：隐藏 Y 轴和网格线，隐藏图例，直接在图形（如柱子顶部）通过 `label: {show: true}` 显示核心数值。
+* **medium (中密度)**：保留极简的横向网格线和底部图例。
+* **high (高密度)**：开启复杂图例、多维 Tooltip，甚至在图表下方通过普通的 HTML `<table>` 附加一份高密度的数据底表。
 
-## 2. 技术抽象规范 (Technical Abstract Specifications)
+## 5. HTML Exemplars (范例参考)
 
-在此动态图表组件的生成过程中，必须**避免死记硬背旧版的 ECharts Options 配置**。所有图表的生成必须基于极简数据可视化的抽象规则进行推导和挂载。**组件自身不应硬编码任何特定的品牌色值或物理字号**，所有的样式属性均应通过读取外部注入的 CSS 变量来实现（例如主题引擎或全局风格指南提供的变量）。
+### Exemplar A: Canonical (标准柱状图)
+```html
+<div data-component="chart" data-variant="bar" data-density="medium" style="grid-column: 1/span 24; grid-row: 5/span 19; display: flex; flex-direction: column;">
+  <h3 style="color: var(--primary); margin-bottom: 20px;">月度营收趋势</h3>
+  <div data-slot="chart-container" id="revenue-chart" style="flex: 1; min-height: 300px; width: 100%;"></div>
 
-### 2.1 容器配置规约 (Container Setup)
-创建一个容器并明确指定大小。图表容器的高度应该由所在的网格单元格大小决定，而不是简单地强制设为 100%。
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 推荐的 CSS 变量读取 Helper
+      const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#333';
+      
+      const colorAccent = getCssVar('--accent');
+      const colorMuted = getCssVar('--text-muted');
+      const colorGrid = getCssVar('--border-default');
 
-### 2.2 初始化时序要求 (Initialization)
-必须在所有图表容器渲染完毕后再执行初始化脚本（通过 `DOMContentLoaded` 事件）。ECharts CDN 脚本引用必须位于初始化代码之前。
+      const myChart = echarts.init(document.getElementById('revenue-chart'));
+      myChart.setOption({
+        animation: false,
+        color: [colorAccent, '#94A3B8'], // 使用 CSS 变量或主题副色
+        tooltip: { trigger: 'axis', backgroundColor: '#1A1A1A', textStyle: { color: '#FFF' }, borderWidth: 0 },
+        legend: { bottom: 0, textStyle: { color: colorMuted } },
+        grid: { containLabel: true, left: '2%', right: '5%', bottom: '10%' },
+        xAxis: { type: 'category', data: ['Q1', 'Q2', 'Q3'], axisLine: { show: true, lineStyle: { color: colorGrid } }, axisTick: { show: false } },
+        yAxis: { type: 'value', axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { color: colorGrid } } },
+        series: [{ type: 'bar', data: [120, 200, 150], label: { show: true, position: 'top', color: colorAccent } }]
+      });
+    });
+  </script>
+</div>
+```
 
-### 2.3 响应式与优化考量 (Responsive Considerations)
-- 对于较小的格位 (`h ≤ 6`)，应将字号减小 2px；如果空间极为局促，则考虑隐藏图例 (`legend`)。
-- 当同一幻灯片中存在多个独立图表时，请**务必设置 `animation: false`**（关闭动画）以确保加载性能和稳定性。
+## 6. Styling Hooks (样式钩子)
+*   **语义属性 (必须)**：`data-component="chart"`, `data-variant="bar|line|pie|waterfall|scatter"`, `data-density="low|medium|high"`。
+*   **主题对接**：图表的 `color` 数组和各类 `lineStyle` 必须使用 `getCssVar()` 对接 HTML 的 `var(--primary)`, `var(--accent)`, `var(--border-default)`, `var(--text-muted)`。
 
-### 2.4 核心调色盘注入 (Color Palette Injection)
-在任何 `echarts.init()` 对应的 `setOption` 方法内，必须在根节点强制显性覆盖 `color` 数组，以接管 ECharts 原生的多色配置。
-*   调色盘颜色必须通过全局 CSS 变量（例如主题色、主文字色等）动态读取构建，严禁在代码中直接写死 HEX 或 RGB 色值。
-*   强调色应仅用于需要凸显的特定数据系列或高亮状态。
+## 7. Failure Modes (典型失败模式与反例)
+*   ❌ **网格噪音过大**：保留了 ECharts 默认深色竖向和横向网格线，甚至保留了每一个刻度的小竖线，导致图表看起来粗糙杂乱。
+*   ❌ **硬编码颜色**：在 `color: ['#FF0000', '#00FF00']` 里写死了 HEX，导致当文档在 Editor 中切换主题时，图表颜色格格不入。
+*   ❌ **标签切裁**：忘记配置 `grid: { containLabel: true }`，导致左侧数值极大的 Y 轴或底部名字极长的分类被裁切到画布之外。
 
-### 2.5 极简网格坐标轴算法 (Minimalist Axis Grid)
-所有具备直角坐标系 (x/y Axis) 的图表，必须按如下算法减少视觉噪音：
-*   **X 轴 (类目轴)**：保留底部基准线 (`axisLine: { show: true }`)。但必须砍掉所有突出的刻度小竖线 (`axisTick: { show: false }`)。文字颜色应绑定为弱化的文本变量。
-*   **Y 轴 (数值轴)**：彻底隐藏纵向的主轴线 (`axisLine: { show: false }`) 以及刻度小横线 (`axisTick: { show: false }`)。
-*   **背景导引线 (Split Lines)**：Y轴的水平切割网格线必须极度弱化，严禁使用强烈的深色或虚线，应采用极淡的背景变量色。
-
-### 2.6 图例与提示框黑盒化 (Tooltip & Legend)
-*   **图例 (Legend)**：默认挂载于右上角 (`right: 10, top: 0`) 或底部居中。严禁在图例上包裹任何明显的边框、背景色或阴影。
-*   **提示黑盒 (Tooltip Blackbox)**：开启 `tooltip: { trigger: "axis" }` 或 `item`。其弹出层的背景色必须覆写为与页面底色高对比度的主题暗色，且内部文字应反白显示，且取消多余的描边线框。
-
-### 2.7 视图防切裁保险 (Viewport Anti-Clipping)
-为了防止复杂刻度标签溢出画布被切掉，必须在 `setOption` 的根节点注入防护机制：
-*   核心开关：`grid: { containLabel: true }` 此参数必须开启。
-*   安全边距垫片：在此基础上，辅以 `left: "5%", right: "5%", bottom: "10%"` 左右的内边距，确保图表呼吸感。
-
-## 3. QA 验收条件
-
-* **C-CHT-01**: 图表容器是否有明确的物理高度限制（未溢出或塌缩）？
-* **C-CHT-02**: X/Y 轴标签和图例文字是否完整显示（未被截断）？
-* **C-CHT-03**: 多图表页面是否已关闭动画 (`animation: false`)，加载无明显卡顿？
-* **C-CHT-04**: 调色盘是否通过 CSS 变量注入（未硬编码 HEX 色值）？
+## 8. QA Checklist (QA 验收条件)
+*   [ ] **C-CHT-01**: 组件是否具有 `data-component="chart"` 属性以及明确的物理高度？
+*   [ ] **C-CHT-02**: 图表配色是否全部使用了提取的 CSS 变量，没有任何硬编码的 HEX/RGB？
+*   [ ] **C-CHT-03**: X/Y 轴标签和图例文字是否完整显示未被截断（是否开启了 containLabel）？
+*   [ ] **C-CHT-04**: Y轴（数值轴）的主轴线和刻度小短线是否已经被隐藏去噪？
+*   [ ] **C-CHT-05**: 页面内的多图表是否开启了 `animation: false`？

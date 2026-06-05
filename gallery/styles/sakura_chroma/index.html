@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHog 薪酬福利研究指南</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&amp;family=Albert+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Noto+Sans+JP:wght@500;700&amp;display=swap">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Default background outside slides */
+            padding: 40px 0;           /* Top/bottom padding for the whole page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;       /* Center slides horizontally */
+            gap: 40px;                 /* Gap between slides */
+            margin: 0;
+        }
+        .slide {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: add a shadow to make slides pop */
+            margin: 0 !important;      /* Override individual slide margins */
+        }
+/* Global Boilerplate Injected */
+
+    :root {
+      --border-default: #E2E8F0;
+    }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      margin: 0;
+      --slide-padding: 50px 60px;
+      --gap: 15px;
+      --font-base: 18px;
+      padding: var(--slide-padding);
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(24, 1fr);
+      gap: var(--gap);
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      /* removed background-color: #ffffff; to allow individual slides to define their own backgrounds */
+    }
+
+/* Slide Specific CSS */
+
+/* from: page_01.html (scoped) */
+#slide-auto-1593695688{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1593695688{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1593695688.slide,#slide-auto-1593695688.slide *,#slide-auto-1593695688.slide *::before,#slide-auto-1593695688.slide *::after{box-sizing:border-box}
+#slide-auto-1593695688.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1593695688.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1593695688 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1593695688 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1593695688 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1593695688 .title-block{grid-column:2/span 14;grid-row:6/span 10;z-index:10;position:relative}
+#slide-auto-1593695688 .title-block h1{font-family:"Big Shoulders Display",sans-serif;font-size:72px;font-weight:900;color:var(--ink);letter-spacing:-0.025em;line-height:0.84;margin:0;text-transform:uppercase;transform:rotate(-2deg);transform-origin:left bottom}
+#slide-auto-1593695688 .title-block .subtitle{font-family:"Albert Sans",sans-serif;font-size:24px;font-weight:700;color:var(--text-main);margin-top:20px;padding-left:10px;border-left:6px solid var(--red);background:rgba(241,230,203,0.8)}
+#slide-auto-1593695688 .cover-image{grid-column:12/span 12;grid-row:4/span 16;background-image:url(images/cover.png);background-size:cover;background-position:center;border:2px solid var(--ink);z-index:5}
+#slide-auto-1593695688 .badge{grid-column:20/span 4;grid-row:2/span 4;background:var(--red);color:var(--paper);display:flex;align-items:center;justify-content:center;text-align:center;font-family:"JetBrains Mono",monospace;font-size:18px;font-weight:700;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);z-index:15;transform:rotate(15deg)}
+#slide-auto-1593695688 .stripe-decor{position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(135deg,transparent 40%,var(--pink) 40%,var(--pink) 42%,var(--orange) 42%,var(--orange) 44%,var(--yellow) 44%,var(--yellow) 46%,transparent 46%);z-index:1;pointer-events:none}
+#slide-auto-1593695688 .source-footer-1{grid-column:2/span 22;grid-row:23/span 2;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:space-between;align-items:flex-end;color:var(--ink);border-top:1.5px solid var(--ink);padding-top:8px;z-index:10}
+
+/* from: page_02.html (scoped) */
+#slide-auto-1622324839{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1622324839{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1622324839.slide,#slide-auto-1622324839.slide *,#slide-auto-1622324839.slide *::before,#slide-auto-1622324839.slide *::after{box-sizing:border-box}
+#slide-auto-1622324839.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1622324839.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1622324839 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1622324839 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1622324839 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1622324839.slide{--gap: 8px}
+#slide-auto-1622324839 .left-col{grid-column:1/span 8;grid-row:5/span 18;background:var(--red);color:var(--paper);border:2px solid var(--ink);padding:24px;display:flex;flex-direction:column;gap:16px}
+#slide-auto-1622324839 .left-col h2{font-family:"Big Shoulders Display",sans-serif;font-size:42px;line-height:0.86;margin:0;text-transform:uppercase}
+#slide-auto-1622324839 .left-col p{font-size:16px;line-height:1.5;font-weight:500}
+#slide-auto-1622324839 .photo-slot{flex-grow:1;background-image:url(images/image_01.png);background-size:cover;border:2px solid var(--ink);filter:grayscale(100%) contrast(1.2) sepia(20%) hue-rotate(-10deg)}
+#slide-auto-1622324839 .right-col{grid-column:9/span 16;grid-row:5/span 18;display:grid;grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(18,1fr);gap:var(--gap)}
+#slide-auto-1622324839 .info-box-1{grid-column:1/span 16;grid-row:1/span 6;padding:16px}
+#slide-auto-1622324839 .info-box-2{grid-column:1/span 8;grid-row:7/span 12;padding:16px}
+#slide-auto-1622324839 .info-box-3{grid-column:9/span 8;grid-row:7/span 12;padding:16px}
+#slide-auto-1622324839 .info-box h3{font-family:"JetBrains Mono",monospace;font-size:14px;background:var(--ink);color:var(--paper);display:inline-block;padding:4px 8px;margin:0 0 12px 0}
+#slide-auto-1622324839 .info-box p,#slide-auto-1622324839 .info-box li{font-size:14.5px;line-height:1.6;margin-bottom:8px;color:var(--ink)}
+#slide-auto-1622324839 .info-box ul{padding-left:20px;margin:0}
+
+/* from: page_03.html (scoped) */
+#slide-auto-1650953990{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1650953990{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1650953990.slide,#slide-auto-1650953990.slide *,#slide-auto-1650953990.slide *::before,#slide-auto-1650953990.slide *::after{box-sizing:border-box}
+#slide-auto-1650953990.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1650953990.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1650953990 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1650953990 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1650953990 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1650953990.slide{--gap: 10px}
+#slide-auto-1650953990 .formula-block{grid-column:1/span 24;grid-row:5/span 4;background:var(--bg-surface-light);border:2px dashed var(--ink);display:flex;align-items:center;justify-content:center;gap:16px;font-family:"JetBrains Mono",monospace;font-size:18px;font-weight:700;color:var(--ink)}
+#slide-auto-1650953990 .formula-item{background:var(--paper);padding:10px 16px;border:1.5px solid var(--ink);text-align:center}
+#slide-auto-1650953990 .formula-item span{display:block;font-size:12px;margin-bottom:4px;color:var(--red);font-family:"Albert Sans",sans-serif;font-weight:bold;text-transform:uppercase}
+#slide-auto-1650953990 .matrix-grid{grid-column:1/span 24;grid-row:10/span 14;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+#slide-auto-1650953990 .m-card{padding:16px;display:flex;flex-direction:column}
+#slide-auto-1650953990 .m-card h3{font-family:"Big Shoulders Display",sans-serif;font-size:28px;margin:0 0 12px 0;border-bottom:2px solid var(--ink);padding-bottom:8px}
+#slide-auto-1650953990 .m-card p,#slide-auto-1650953990 .m-card li{font-size:14px;line-height:1.5;margin-bottom:8px}
+#slide-auto-1650953990 .m-card ul{padding-left:16px;margin:0}
+#slide-auto-1650953990 .m-card .highlight{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--pink);color:var(--paper);padding:2px 6px}
+
+/* from: page_04.html (scoped) */
+#slide-auto-1679583141{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1679583141{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1679583141.slide,#slide-auto-1679583141.slide *,#slide-auto-1679583141.slide *::before,#slide-auto-1679583141.slide *::after{box-sizing:border-box}
+#slide-auto-1679583141.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1679583141.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1679583141 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1679583141 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1679583141 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1679583141.slide{--gap: 8px}
+#slide-auto-1679583141 .top-text{grid-column:1/span 24;grid-row:5/span 4;padding:0 16px;font-size:18px;line-height:1.5;color:var(--ink)}
+#slide-auto-1679583141 .data-table-container{grid-column:2/span 22;grid-row:9/span 15;border:2px solid var(--ink);background:var(--paper);align-self:start}
+#slide-auto-1679583141 table{width:100%;border-collapse:collapse;font-family:"Albert Sans",sans-serif}
+#slide-auto-1679583141 th{background:var(--ink);color:var(--paper);text-align:left;padding:10px 12px;font-family:"JetBrains Mono",monospace;font-size:14px;border-right:1px solid var(--paper)}
+#slide-auto-1679583141 td{padding:8px 12px;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink);font-size:14.5px;color:var(--ink)}
+#slide-auto-1679583141 tr:last-child td{border-bottom:none}
+#slide-auto-1679583141 td:last-child,#slide-auto-1679583141 th:last-child{border-right:none}
+#slide-auto-1679583141 .vu-bar{display:flex;gap:4px;height:16px}
+#slide-auto-1679583141 .vu-cell{width:12px;height:100%;background:var(--bg-surface-light);border:1px solid var(--ink)}
+#slide-auto-1679583141 .vu-cell.active-red{background:var(--red)}
+#slide-auto-1679583141 .vu-cell.active-orange{background:var(--orange)}
+#slide-auto-1679583141 .vu-cell.active-green{background:var(--green)}
+#slide-auto-1679583141 .multiplier-val{font-family:"Big Shoulders Display",sans-serif;font-size:28px;font-weight:800}
+
+/* from: page_05.html (scoped) */
+#slide-auto-1708212292{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1708212292{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1708212292.slide,#slide-auto-1708212292.slide *,#slide-auto-1708212292.slide *::before,#slide-auto-1708212292.slide *::after{box-sizing:border-box}
+#slide-auto-1708212292.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1708212292.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1708212292 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1708212292 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1708212292 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1708212292.slide{--gap: 12px}
+#slide-auto-1708212292 .left-col{grid-column:1/span 11;grid-row:5/span 18;display:flex;flex-direction:column;gap:12px}
+#slide-auto-1708212292 .right-col{grid-column:12/span 13;grid-row:5/span 18;display:grid;grid-template-rows:auto 1fr;gap:12px}
+#slide-auto-1708212292 .feature-card{border:1.5px solid var(--ink);background:var(--bg-surface-light);padding:16px;position:relative}
+#slide-auto-1708212292 .feature-card::before{content:"✓";position:absolute;top:-10px;right:-10px;width:28px;height:28px;background:var(--red);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:bold;border:1.5px solid var(--ink);transform:rotate(10deg)}
+#slide-auto-1708212292 .feature-card h3{font-family:"Big Shoulders Display",sans-serif;font-size:24px;margin:0 0 10px 0;color:var(--ink);line-height:0.9;text-transform:uppercase}
+#slide-auto-1708212292 .feature-card p{font-size:13.5px;line-height:1.5;margin-bottom:8px}
+#slide-auto-1708212292 .photo-slot{width:100%;height:100%;background-image:url(images/image_03.png);background-size:cover;border:2px solid var(--ink);filter:grayscale(100%) contrast(1.1) sepia(10%)}
+
+/* from: page_06.html (scoped) */
+#slide-auto-1736841443{--primary: #F1E6CB;--accent: #E5392A;--bg-base: #F1E6CB;--bg-surface: #F1E6CB;--bg-surface-light: #E5D6B0;--text-main: #3A2516;--text-light: rgba(58,37,22,0.7);--grid-line: #3A2516;--red: #E5392A;--pink: #E54489;--orange: #F09131;--yellow: #F0BC2A;--green: #3D9F47;--blue: #3F8BC4;--ink: #3A2516;--paper: #F1E6CB}
+#slide-auto-1736841443{background-color:var(--bg-base);font-family:"Albert Sans","Helvetica Neue",sans-serif}
+#slide-auto-1736841443.slide,#slide-auto-1736841443.slide *,#slide-auto-1736841443.slide *::before,#slide-auto-1736841443.slide *::after{box-sizing:border-box}
+#slide-auto-1736841443.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;background-color:var(--bg-base);box-shadow:0 0 0 1px rgba(0,0,0,0.05),0 20px 40px rgba(0,0,0,0.1)}
+#slide-auto-1736841443.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(58,37,22,0.12) 1px,transparent 1.6px)0 0/4px 4px;pointer-events:none;z-index:0}
+#slide-auto-1736841443 .card{border-radius:0px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:none}
+#slide-auto-1736841443 .header-band{grid-column:1/span 24;grid-row:1/span 3;background:var(--ink);color:var(--paper);display:flex;align-items:center;padding:0 24px;font-family:"Big Shoulders Display",sans-serif;font-size:52px;font-weight:900;text-transform:uppercase;letter-spacing:-0.02em}
+#slide-auto-1736841443 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-family:"JetBrains Mono",monospace;font-size:12px;display:flex;justify-content:flex-end;align-items:flex-end;color:var(--ink)}
+#slide-auto-1736841443.slide{--gap: 12px}
+#slide-auto-1736841443 .bento-grid{grid-column:1/span 24;grid-row:5/span 18;display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(18,1fr);gap:var(--gap)}
+#slide-auto-1736841443 .b-card{border:1.5px solid var(--ink);background:var(--paper);padding:16px;display:flex;flex-direction:column}
+#slide-auto-1736841443 .b-card h3{font-family:"Big Shoulders Display",sans-serif;font-size:22px;text-transform:uppercase;margin:0 0 10px 0;color:var(--red);line-height:0.9}
+#slide-auto-1736841443 .b-card p{font-size:13.5px;line-height:1.5;margin:0}
+#slide-auto-1736841443 .c1{grid-column:1/span 10;grid-row:1/span 9}
+#slide-auto-1736841443 .c2{grid-column:11/span 14;grid-row:1/span 9;background:var(--bg-surface-light)}
+#slide-auto-1736841443 .c3{grid-column:1/span 14;grid-row:10/span 9;background:var(--ink);color:var(--paper)}
+#slide-auto-1736841443 .c3 h3{color:var(--yellow)}
+#slide-auto-1736841443 .c3 p{color:var(--paper)}
+#slide-auto-1736841443 .c4{grid-column:15/span 10;grid-row:10/span 9}
+#slide-auto-1736841443 .badge-tag{display:inline-block;padding:4px 8px;font-family:"JetBrains Mono",monospace;font-size:12px;background:var(--ink);color:var(--paper);margin-bottom:12px}
+
+    </style>
+</head>
+<body>
+
+<!-- from: page_01.html -->
+<div id="slide-auto-1593695688" class="slide">
+    <div class="stripe-decor"></div>
+    <div class="title-block">
+      <h1>POSTHOG<br>COMPENSATION<br>&amp; ORG STUDY</h1>
+      <div class="subtitle">在激进透明与精益敏捷中的机制创新</div>
+    </div>
+    <div class="cover-image"></div>
+    <div class="badge">RADICAL<br>TRANSPARENCY</div>
+    <div class="source-footer-1">
+      <div>[SRC] PostHog 薪酬福利研究指南</div>
+      <div>2026 RESEARCH EDITION // SAKURA CHROMA</div>
+    </div>
+  </div>
+
+<!-- from: page_02.html -->
+<div id="slide-auto-1622324839" class="slide">
+    <div class="header-band">01. PHILOSOPHY OF RADICAL TRANSPARENCY</div>
+    <div class="left-col">
+      <h2>Trust<br>Currency</h2>
+      <p>传统的黑箱式薪酬管理和层级化控制已无法适应新型生产关系。PostHog采用“激进透明”策略，将薪酬计算公式、职级定义完全公开，改变了招聘与留存的纳什均衡点。</p>
+      <div class="photo-slot"></div>
+    </div>
+    <div class="right-col">
+      <div class="card info-box-1">
+        <h3>[A] ELIMINATING NEGOTIATION TAX</h3>
+        <p>透明化消除了高认知知识工作者的“谈判税”。公开计算器发出强有力的信号：薪酬基于市场价值和算法规则，而非讨价还价。这在接触初期就建立了心理契约，自动过滤不匹配的期望值。</p>
+      </div>
+      <div class="card info-box-2">
+        <h3>[B] PAY FOR SKILLS &amp; IMPACT</h3>
+        <p>为技能和影响力付费，而非资历或行政头衔。</p>
+        <ul>
+          <li><strong>去头衔化:</strong> 极力避免复杂头衔体系，强调 Role 而非 Status。</li>
+          <li><strong>高绩效锚点:</strong> 认为顶尖工程师产出是普通的10倍。薪酬基准直接对标旧金山第90分位。</li>
+          <li><strong>宽带宽体系:</strong> 打破为了加薪必须转管理的“彼得原理”。</li>
+        </ul>
+      </div>
+      <div class="card info-box-3">
+        <h3>[C] GLOBAL ARBITRAGE &amp; FLOORS</h3>
+        <p>受控的地理套利与“双保底政策”：</p>
+        <ul>
+          <li><strong>美国境内下限 0.8:</strong> 最低不低于旧金山基准的80%。</li>
+          <li><strong>全球其他地区下限 0.6:</strong> 颠覆性设定，为低成本国家提供巨大的购买力溢价（常为当地市场3-5倍薪资），以极低成本收割全球最优秀的智力资源。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="source-footer">PAGE_02 // POSTHOG RESEARCH REPORT</div>
+  </div>
+
+<!-- from: page_03.html -->
+<div id="slide-auto-1650953990" class="slide">
+    <div class="header-band">02. THE COMPENSATION ALGORITHM</div>
+    
+    <div class="formula-block">
+      <div class="formula-item"><span>Output</span>BASE SALARY</div>
+      <div>=</div>
+      <div class="formula-item"><span>Var 1</span>BENCHMARK</div>
+      <div>×</div>
+      <div class="formula-item"><span>Var 2</span>LEVEL MODIFIER</div>
+      <div>×</div>
+      <div class="formula-item"><span>Var 3</span>STEP MODIFIER</div>
+      <div>×</div>
+      <div class="formula-item"><span>Var 4</span>LOCATION FACTOR</div>
+    </div>
+    
+    <div class="matrix-grid">
+      <div class="card m-card">
+        <h3>1. BENCHMARK</h3>
+        <p>锚定旧金山（San Francisco）市场费率。主要依赖 Pave 提供的实时薪酬基准数据。</p>
+        <ul>
+          <li><strong>工程岗:</strong> 第90分位 <span class="highlight">90th</span></li>
+          <li><strong>非工程岗:</strong> 第50分位 + 20% <span class="highlight">~60-70th</span></li>
+        </ul>
+        <p>通用基准约 $262,000，SDK工程师约 $243,000。</p>
+      </div>
+      <div class="card m-card" style="background: var(--bg-surface-light);">
+        <h3>2. LEVEL MODIFIER</h3>
+        <p>扁平化职业阶梯，适应“小团队”模式：</p>
+        <ul>
+          <li><strong>Junior:</strong> 极少招聘</li>
+          <li><strong>Intermediate:</strong> 独立负责项目</li>
+          <li><strong>Senior:</strong> 高度决策自主权 (默认切入点，系数 1.0)</li>
+          <li><strong>Staff:</strong> 跨团队战略级影响力</li>
+        </ul>
+      </div>
+      <div class="card m-card">
+        <h3>3. STEP MODIFIER</h3>
+        <p>绩效微调的杠杆，数值范围 <strong>0.95 - 1.04</strong>。</p>
+        <p>解决扁平组织“不晋升就不加薪”的痛点。管理者可对员工进步进行即时小幅奖励（5%-10%上下浮动），无需沉重晋升评审。</p>
+      </div>
+      <div class="card m-card" style="background: var(--bg-surface-light);">
+        <h3>4. LOCATION FACTOR</h3>
+        <p>兼具成本控制与人文关怀的双保底机制：</p>
+        <ul>
+          <li>参考 GitLab 开源数据及生活成本数据。</li>
+          <li><strong>美国境内下限: 0.8</strong></li>
+          <li><strong>全球其他地区下限: 0.6</strong></li>
+        </ul>
+        <p>以低基数换取新兴市场的垄断级人才吸引力。</p>
+      </div>
+    </div>
+    
+    <div class="source-footer">PAGE_03 // POSTHOG RESEARCH REPORT</div>
+  </div>
+
+<!-- from: page_04.html -->
+<div id="slide-auto-1679583141" class="slide">
+    <div class="header-band">03. CROSS-SELL MULTIPLIER MODEL</div>
+    
+    <div class="top-text">
+      <strong>基于产品矩阵的销售佣金模型：</strong>不同于传统SaaS基于合同金额（TCV）的提成，PostHog佣金基数是前12个月内产生的ARR。同时引入“交叉销售乘数”，推动客户从单一工具转向平台深度用户，构建极高切换成本的护城河。
+    </div>
+    
+    <div class="data-table-container">
+      <table>
+        <thead>
+          <tr>
+            <th width="15%">付费产品数</th>
+            <th width="15%">基础系数</th>
+            <th width="15%">增量系数</th>
+            <th width="15%">最终乘数</th>
+            <th width="40%">销售行为影响分析</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="vu-bar"><div class="vu-cell active-red"></div><div class="vu-cell"></div><div class="vu-cell"></div><div class="vu-cell"></div><div class="vu-cell"></div></div>
+              1个
+            </td>
+            <td>0.7</td>
+            <td>0</td>
+            <td class="multiplier-val" style="color:var(--red);">0.7x</td>
+            <td><strong>惩罚机制。</strong>仅拿70%佣金，强力抑制高流失风险的单点销售行为。</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="vu-bar"><div class="vu-cell active-orange"></div><div class="vu-cell active-orange"></div><div class="vu-cell"></div><div class="vu-cell"></div><div class="vu-cell"></div></div>
+              2个
+            </td>
+            <td>0.7</td>
+            <td>0.2</td>
+            <td class="multiplier-val" style="color:var(--orange);">0.9x</td>
+            <td>接近标准佣金。鼓励销售人员至少进行一次交叉销售。</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="vu-bar"><div class="vu-cell active-green"></div><div class="vu-cell active-green"></div><div class="vu-cell active-green"></div><div class="vu-cell"></div><div class="vu-cell"></div></div>
+              3个
+            </td>
+            <td>0.7</td>
+            <td>0.4</td>
+            <td class="multiplier-val" style="color:var(--green);">1.1x</td>
+            <td><strong>奖励区间。</strong>获得110%溢价，激励推销解决方案组合(Analytics+Replay)。</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="vu-bar"><div class="vu-cell active-green"></div><div class="vu-cell active-green"></div><div class="vu-cell active-green"></div><div class="vu-cell active-green"></div><div class="vu-cell"></div></div>
+              4个
+            </td>
+            <td>0.7</td>
+            <td>0.6</td>
+            <td class="multiplier-val" style="color:var(--green);">1.3x</td>
+            <td>高额激励。客户具有极强的粘性和产品依赖。</td>
+          </tr>
+          <tr style="background: var(--bg-surface-light);">
+            <td>
+              <div class="vu-bar"><div class="vu-cell active-blue"></div><div class="vu-cell active-blue"></div><div class="vu-cell active-blue"></div><div class="vu-cell active-blue"></div><div class="vu-cell active-blue"></div></div>
+              5个
+            </td>
+            <td>0.7</td>
+            <td>0.8</td>
+            <td class="multiplier-val" style="color:var(--blue);">1.5x</td>
+            <td><strong>顶级激励。</strong>客户流失率极低，公司愿意支付50%额外佣金。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="source-footer">PAGE_04 // POSTHOG RESEARCH REPORT</div>
+  </div>
+
+<!-- from: page_05.html -->
+<div id="slide-auto-1708212292" class="slide">
+    <div class="header-band">04. EQUITY AS TRUE OWNERSHIP</div>
+    
+    <div class="left-col">
+      <div class="feature-card" style="flex-grow: 1;">
+        <h3>10-Year<br>Exercise Window</h3>
+        <p><strong>颠覆行业90天常规的创新：</strong></p>
+        <p>大多数初创公司规定员工离职后必须在90天内行权，否则放弃期权，这是一种变相的资产剥夺。</p>
+        <p>PostHog 提供长达 <strong>10年</strong> 的行权窗口。彻底消除了员工离职时的财务压力。即便员工追求其他机会，依然能保留其创造的价值份额，增加了安全感，培养了终身拥护者。</p>
+      </div>
+      <div class="feature-card" style="background: var(--paper);">
+        <h3>Vesting &amp; Double-trigger</h3>
+        <p><strong>归属与双重加速机制：</strong></p>
+        <p>采用经典4年制（1年悬崖），但归属从入职第一天算起。</p>
+        <p>如果公司控制权变更且员工被迫离职，所有未归属期权将 <strong>立即全部归属 (100% Vesting)</strong>。提供极强降落伞保护。</p>
+      </div>
+    </div>
+    
+    <div class="right-col">
+      <div class="feature-card" style="background: var(--ink); color: var(--paper);">
+        <h3 style="color: var(--pink);">The First Investor</h3>
+        <p><strong>做你离职后的第一位投资人：</strong></p>
+        <p>如果员工在 PostHog 工作满2年并离职创业，PostHog 承诺成为其第一位投资者。</p>
+        <p>这吸引了最具野心和“创始人精神”的人才，建立了超越雇佣关系的合伙人式纽带。</p>
+      </div>
+      <div class="photo-slot"></div>
+    </div>
+
+    <div class="source-footer">PAGE_05 // POSTHOG RESEARCH REPORT</div>
+  </div>
+
+<!-- from: page_06.html -->
+<div id="slide-auto-1736841443" class="slide">
+    <div class="header-band">05. REMOTE CULTURE &amp; LEAN MANAGEMENT</div>
+    
+    <div class="bento-grid">
+      <div class="b-card c1">
+        <span class="badge-tag">FINANCIAL AUTONOMY</span>
+        <h3>$5,000 / Month<br>User Limit</h3>
+        <p>提供极高信任度的财务授权。每月5,000美元额度用于购买SaaS、书籍、培训或联合办公。只要合规无需层层审批。“先花钱，后审计”极大地提升了决策速度。</p>
+      </div>
+      <div class="b-card c2">
+        <span class="badge-tag">SOCIAL CAPITAL</span>
+        <h3>Meet Up Budgets</h3>
+        <p>为对抗全远程带来的孤岛效应，除了每年全球团建，每位员工每季度有 <strong>$1,500</strong> 预算用于与同事自发线下见面。跨国旅行或聚餐均可报销，促进非正式沟通。</p>
+      </div>
+      <div class="b-card c3">
+        <span class="badge-tag">DECENTRALIZED ORG</span>
+        <h3>Small Teams &amp; Coaching Managers</h3>
+        <p>公司拆分为一个个独立“小团队”，拥有极高自主权。最核心的是：<strong>经理无权决定下属薪酬</strong>。薪酬完全由透明公式决定，消除办公室政治，经理成为服务团队的教练。</p>
+      </div>
+      <div class="b-card c4">
+        <span class="badge-tag">LEAN SOFTWARE</span>
+        <h3>Speed Over Seamlessness</h3>
+        <p>受丰田生产方式影响，将“等待审批”和“未发布代码”视为浪费。设立“安灯绳”机制，任何人可因 CI/CD 失败停止生产线。全栈交付减少交接环节。</p>
+      </div>
+    </div>
+
+    <div class="source-footer">PAGE_06 // POSTHOG RESEARCH REPORT</div>
+  </div>
+
+
+</body>
+</html>

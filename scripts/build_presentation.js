@@ -115,6 +115,18 @@ function buildPresentation() {
             const scripts = slide.querySelectorAll('script');
             scripts.forEach(s => s.remove());
 
+            // Rewrite image paths to be relative to the assembled HTML file
+            const images = slide.querySelectorAll('img');
+            images.forEach(img => {
+                const src = img.getAttribute('src');
+                if (src && !src.startsWith('http') && !src.startsWith('data:') && !src.startsWith('/')) {
+                    const absoluteImgPath = path.join(inputDir, src);
+                    let relativeSrc = path.relative(path.dirname(outputPath), absoluteImgPath);
+                    relativeSrc = relativeSrc.split(path.sep).join('/');
+                    img.setAttribute('src', relativeSrc);
+                }
+            });
+
             // Re-bind inline styles missing id/class if necessary, but we'll extract as is
             let slideDOM = slide.outerHTML;
 

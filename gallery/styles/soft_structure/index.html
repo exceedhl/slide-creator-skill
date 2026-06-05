@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostHog 薪酬与组织效能深度研究</title>
+    
+    <style>
+        body {
+            background-color: #f0f0f0; /* Default background outside slides */
+            padding: 40px 0;           /* Top/bottom padding for the whole page */
+            display: flex;
+            flex-direction: column;
+            align-items: center;       /* Center slides horizontally */
+            gap: 40px;                 /* Gap between slides */
+            margin: 0;
+        }
+        .slide {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: add a shadow to make slides pop */
+            margin: 0 !important;      /* Override individual slide margins */
+        }
+/* Global Boilerplate Injected */
+
+    :root {
+      --border-default: #E2E8F0;
+    }
+    .slide {
+      width: 1280px;
+      height: 720px;
+      margin: 0;
+      --slide-padding: 50px 60px;
+      --gap: 15px;
+      --font-base: 18px;
+      padding: var(--slide-padding);
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(24, 1fr);
+      gap: var(--gap);
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      /* removed background-color: #ffffff; to allow individual slides to define their own backgrounds */
+    }
+
+/* Slide Specific CSS */
+
+/* from: page_01.html (scoped) */
+#slide-auto-1593695688{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1593695688{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1593695688.slide,#slide-auto-1593695688.slide *,#slide-auto-1593695688.slide *::before,#slide-auto-1593695688.slide *::after{box-sizing:border-box}
+#slide-auto-1593695688.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 16px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1593695688 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1593695688 .cover-image{grid-column:1/span 14;grid-row:1/span 24;border-radius:var(--card-radius);overflow:hidden}
+#slide-auto-1593695688 .cover-image img{width:100%;height:100%;object-fit:cover}
+#slide-auto-1593695688 .title-block{grid-column:16/span 8;grid-row:9/span 10;display:flex;flex-direction:column;justify-content:center}
+#slide-auto-1593695688 .tag{color:var(--accent);font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px}
+#slide-auto-1593695688 h1{font-size:52px;font-weight:700;color:var(--primary);letter-spacing:-0.02em;line-height:1.1;margin:0 0 24px 0}
+#slide-auto-1593695688 .subtitle{font-size:22px;font-weight:400;color:var(--text-light);line-height:1.5;margin:0}
+#slide-auto-1593695688 .source-footer{grid-column:16/span 8;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end}
+
+/* from: page_02.html (scoped) */
+#slide-auto-1622324839{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1622324839{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1622324839.slide,#slide-auto-1622324839.slide *,#slide-auto-1622324839.slide *::before,#slide-auto-1622324839.slide *::after{box-sizing:border-box}
+#slide-auto-1622324839.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1622324839 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1622324839 .title-section{grid-column:1/span 24;grid-row:1/span 5}
+#slide-auto-1622324839 .title-section h1{font-size:36px;font-weight:700;color:var(--primary);margin:0 0 8px 0}
+#slide-auto-1622324839 .title-section p{font-size:18px;color:var(--text-light);margin:0}
+#slide-auto-1622324839 .content-left{grid-column:1/span 13;grid-row:6/span 18;display:flex;flex-direction:column;gap:var(--gap)}
+#slide-auto-1622324839 .content-right{grid-column:15/span 10;grid-row:6/span 18}
+#slide-auto-1622324839 .info-card{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+#slide-auto-1622324839 .info-card h3{font-size:20px;font-weight:600;color:var(--text-main);margin:0;display:flex;align-items:center;gap:12px}
+#slide-auto-1622324839 .info-card h3::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background-color:var(--accent)}
+#slide-auto-1622324839 .info-card p{font-size:15px;line-height:1.7;color:var(--text-light);margin:0}
+#slide-auto-1622324839 .image-container{width:100%;height:100%;border-radius:var(--card-radius);overflow:hidden}
+#slide-auto-1622324839 .image-container img{width:100%;height:100%;object-fit:cover}
+#slide-auto-1622324839 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end;justify-content:flex-end}
+
+/* from: page_03.html (scoped) */
+#slide-auto-1650953990{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1650953990{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1650953990.slide,#slide-auto-1650953990.slide *,#slide-auto-1650953990.slide *::before,#slide-auto-1650953990.slide *::after{box-sizing:border-box}
+#slide-auto-1650953990.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 16px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1650953990 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1650953990 .title-section{grid-column:1/span 24;grid-row:1/span 5}
+#slide-auto-1650953990 .title-section h1{font-size:36px;font-weight:700;color:var(--primary);margin:0 0 8px 0}
+#slide-auto-1650953990 .title-section p{font-size:18px;color:var(--text-light);margin:0}
+#slide-auto-1650953990 .card-1{grid-column:1/span 14;grid-row:6/span 9}
+#slide-auto-1650953990 .card-2{grid-column:15/span 10;grid-row:6/span 9}
+#slide-auto-1650953990 .card-3{grid-column:1/span 10;grid-row:15/span 9}
+#slide-auto-1650953990 .card-4{grid-column:11/span 14;grid-row:15/span 9}
+#slide-auto-1650953990 .bento-card{padding:24px;display:flex;flex-direction:column}
+#slide-auto-1650953990 .bento-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;border-bottom:1px dashed var(--grid-line);padding-bottom:16px}
+#slide-auto-1650953990 .bento-num{font-size:36px;font-weight:800;color:var(--bg-surface);line-height:1}
+#slide-auto-1650953990 .bento-title{font-size:24px;font-weight:600;color:var(--text-main);margin:0}
+#slide-auto-1650953990 .bento-desc{font-size:15px;line-height:1.7;color:var(--text-light);margin:0}
+#slide-auto-1650953990 .bento-value{margin-top:auto;font-size:28px;font-weight:700;color:var(--accent)}
+#slide-auto-1650953990 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end;justify-content:flex-end}
+
+/* from: page_04.html (scoped) */
+#slide-auto-1679583141{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1679583141{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1679583141.slide,#slide-auto-1679583141.slide *,#slide-auto-1679583141.slide *::before,#slide-auto-1679583141.slide *::after{box-sizing:border-box}
+#slide-auto-1679583141.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 15px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1679583141 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1679583141 .title-section{grid-column:1/span 24;grid-row:1/span 5}
+#slide-auto-1679583141 .title-section h1{font-size:36px;font-weight:700;color:var(--primary);margin:0 0 8px 0}
+#slide-auto-1679583141 .title-section p{font-size:18px;color:var(--text-light);margin:0}
+#slide-auto-1679583141 .table-container{grid-column:1/span 24;grid-row:6/span 17;padding:16px 24px;display:flex;flex-direction:column}
+#slide-auto-1679583141 .table-header-desc{font-size:15px;color:var(--text-light);margin-bottom:12px;line-height:1.5}
+#slide-auto-1679583141 .data-table{width:100%;border-collapse:collapse;text-align:left}
+#slide-auto-1679583141 .data-table th{font-weight:600;color:var(--text-main);padding:10px 12px;border-bottom:2px solid var(--grid-line);font-size:14px}
+#slide-auto-1679583141 .data-table td{padding:8px 12px;border-bottom:1px solid var(--grid-line);color:var(--text-light);font-size:14px;line-height:1.5}
+#slide-auto-1679583141 .data-table tr:last-child td{border-bottom:none}
+#slide-auto-1679583141 .highlight-val{color:var(--accent);font-weight:700;font-size:16px}
+#slide-auto-1679583141 .tag-badge{display:inline-block;padding:4px 10px;border-radius:20px;background-color:var(--bg-surface);color:var(--text-main);font-size:13px;font-weight:600;margin-right:8px;margin-bottom:0}
+#slide-auto-1679583141 .tag-badge.punish{background-color:#FEE2E2;color:#B91C1C}
+#slide-auto-1679583141 .tag-badge.reward{background-color:#D1FAE5;color:#047857}
+#slide-auto-1679583141 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end;justify-content:flex-end}
+
+/* from: page_05.html (scoped) */
+#slide-auto-1708212292{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1708212292{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1708212292.slide,#slide-auto-1708212292.slide *,#slide-auto-1708212292.slide *::before,#slide-auto-1708212292.slide *::after{box-sizing:border-box}
+#slide-auto-1708212292.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1708212292 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1708212292 .title-section{grid-column:1/span 24;grid-row:1/span 5}
+#slide-auto-1708212292 .title-section h1{font-size:36px;font-weight:700;color:var(--primary);margin:0 0 8px 0}
+#slide-auto-1708212292 .title-section p{font-size:18px;color:var(--text-light);margin:0}
+#slide-auto-1708212292 .split-left{grid-column:1/span 14;grid-row:6/span 17;display:flex;flex-direction:column;gap:var(--gap)}
+#slide-auto-1708212292 .split-right{grid-column:15/span 10;grid-row:6/span 17;border-radius:var(--card-radius);overflow:hidden}
+#slide-auto-1708212292 .split-right img{width:100%;height:100%;object-fit:cover}
+#slide-auto-1708212292 .feature-box{padding:20px 24px;flex:1;display:flex;flex-direction:column;justify-content:center}
+#slide-auto-1708212292 .feature-box h3{font-size:22px;font-weight:600;color:var(--text-main);margin:0 0 12px 0;display:flex;align-items:center;gap:12px}
+#slide-auto-1708212292 .feature-box h3::before{content:"";display:block;width:4px;height:20px;background-color:var(--accent);border-radius:2px}
+#slide-auto-1708212292 .feature-box p{font-size:16px;line-height:1.6;color:var(--text-light);margin:0}
+#slide-auto-1708212292 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end;justify-content:flex-end}
+
+/* from: page_06.html (scoped) */
+#slide-auto-1736841443{--primary: #111827;--accent: #059669;--accent-light: #6EE7B7;--bg-base: #F9FAFB;--bg-surface-light: #FFFFFF;--bg-surface: #F3F4F6;--text-main: #1F2937;--text-light: #6B7280;--grid-line: #E5E7EB}
+#slide-auto-1736841443{background-color:var(--bg-base);font-family:"Outfit","Cabinet Grotesk","Helvetica Neue",sans-serif}
+#slide-auto-1736841443.slide,#slide-auto-1736841443.slide *,#slide-auto-1736841443.slide *::before,#slide-auto-1736841443.slide *::after{box-sizing:border-box}
+#slide-auto-1736841443.slide{width:1280px;height:720px;margin:5vh auto;--slide-padding: 50px 60px;--gap: 12px;--font-base: 18px;padding:var(--slide-padding);display:grid;grid-template-columns:repeat(24,1fr);grid-template-rows:repeat(24,1fr);gap:var(--gap);overflow:hidden;position:relative;--card-radius: 12px;--card-border: none;--card-shadow: 0 8px 30px -10px rgba(0,0,0,0.06)}
+#slide-auto-1736841443 .card{border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--card-shadow);background-color:var(--bg-surface-light)}
+#slide-auto-1736841443 .title-section{grid-column:1/span 24;grid-row:1/span 5}
+#slide-auto-1736841443 .title-section h1{font-size:36px;font-weight:700;color:var(--primary);margin:0 0 8px 0}
+#slide-auto-1736841443 .title-section p{font-size:18px;color:var(--text-light);margin:0}
+#slide-auto-1736841443 .card-container{grid-column:1/span 24;grid-row:6/span 17;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+#slide-auto-1736841443 .insight-card{padding:32px 24px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+#slide-auto-1736841443 .insight-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background-color:var(--accent);opacity:0.8}
+#slide-auto-1736841443 .icon-wrap{width:56px;height:56px;border-radius:12px;background-color:var(--bg-surface);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:24px;font-weight:700;color:var(--accent)}
+#slide-auto-1736841443 .insight-card h3{font-size:24px;font-weight:700;color:var(--text-main);margin:0 0 16px 0;line-height:1.3}
+#slide-auto-1736841443 .insight-card p{font-size:16px;line-height:1.7;color:var(--text-light);margin:0}
+#slide-auto-1736841443 .source-footer{grid-column:1/span 24;grid-row:24/span 1;font-size:14px;color:var(--text-light);display:flex;align-items:flex-end;justify-content:flex-end}
+
+    </style>
+</head>
+<body>
+
+<!-- from: page_01.html -->
+<div id="slide-auto-1593695688" class="slide">
+    <div class="cover-image">
+      <img src="posthog_cover_1779086500538.png" alt="Cover Image">
+    </div>
+    
+    <div class="title-block" data-component="TITLE_BLOCK" data-slot="title">
+      <div class="tag">PostHog Research Report</div>
+      <h1>薪酬架构、组织效能与激励体系</h1>
+      <p class="subtitle">在激进透明与精益敏捷中的机制创新深度研究</p>
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      2026 AI Insight Report · Soft Structure Edition
+    </div>
+  </div>
+
+<!-- from: page_02.html -->
+<div id="slide-auto-1622324839" class="slide">
+    <div class="title-section" data-component="TITLE_BLOCK" data-slot="title">
+      <h1>激进透明化哲学与薪酬战略</h1>
+      <p>打破信息不对称，用透明度作为信任货币重塑雇佣关系</p>
+    </div>
+
+    <div class="content-left" data-component="SPLIT_LAYOUT" data-slot="content">
+      <div class="card info-card">
+        <h3>消除“谈判税”与信任基石</h3>
+        <p>传统薪酬是基于博弈和信息不对称。PostHog将薪资公式完全公开，消除了高认知人才由于缺乏谈判技巧而导致的不公感。这种“激进透明”向候选人传递了强烈的信号：在这里，薪酬是基于市场价值和算法，而非讨价还价，极大降低了信任建立门槛。</p>
+      </div>
+      
+      <div class="card info-card">
+        <h3>支付技能而非头衔</h3>
+        <p>彻底打破“只有晋升管理层才能加薪”的彼得原理现象。PostHog设定了极宽的薪酬带宽，直接对标旧金山市场的第90分位，以顶尖薪酬吸引并留存“10倍产出”的顶级贡献者（Individual Contributor），从源头拒绝平庸。</p>
+      </div>
+      
+      <div class="card info-card">
+        <h3>位置因子：全球化套利与高保底</h3>
+        <p>拒绝极端的“全球统一”或“完全本地化”。引入创新双保底机制：无论身处何地（如东欧或东南亚），最低薪酬为旧金山基准的60%；美国境内最低为80%。以低于硅谷的成本提供当地绝对颠覆性的待遇，精准收割全球智力资源。</p>
+      </div>
+    </div>
+
+    <div class="content-right card" data-component="IMAGE" data-slot="image">
+      <div class="image-container">
+        <img src="posthog_philosophy_1779086514667.png" alt="Scales of Fairness">
+      </div>
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      Source: PostHog 薪酬福利研究指南 · 第一部分
+    </div>
+  </div>
+
+<!-- from: page_03.html -->
+<div id="slide-auto-1650953990" class="slide">
+    <div class="title-section" data-component="TITLE_BLOCK" data-slot="title">
+      <h1>薪酬算法的解构：精密计算的四个维度</h1>
+      <p>年度基本薪资 = 基准 (SF 90th) × 级别因子 × 步长因子 × 位置因子</p>
+    </div>
+
+    <!-- Card 1 -->
+    <div class="card bento-card card-1" data-component="MATRIX" data-variant="bento" data-density="high">
+      <div class="bento-header">
+        <h2 class="bento-title">1. 市场基准 (Benchmark)</h2>
+        <div class="bento-num">01</div>
+      </div>
+      <p class="bento-desc">锚定全球科技人才高地美国旧金山。依托 Pave 实时数据，工程角色硬核对标第 90 分位（SF 90th Percentile），非工程角色对标第 50 分位 + 20%。</p>
+      <div class="bento-value">$262,000 / $243,000</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card bento-card card-2" data-component="MATRIX" data-variant="bento" data-density="high">
+      <div class="bento-header">
+        <h2 class="bento-title">2. 级别因子 (Level)</h2>
+        <div class="bento-num">02</div>
+      </div>
+      <p class="bento-desc">扁平化的职业阶梯，规避大厂复杂的 L3-L10 体系。分为 Junior, Intermediate, Senior, Staff 四级，默认新员工从较高起点切入，留足加薪空间。</p>
+      <div class="bento-value">Base: 1.0 (Senior)</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card bento-card card-3" data-component="MATRIX" data-variant="bento" data-density="high">
+      <div class="bento-header">
+        <h2 class="bento-title">3. 步长因子 (Step)</h2>
+        <div class="bento-num">03</div>
+      </div>
+      <p class="bento-desc">提供 0.95 至 1.04 的微调杠杆，无需启动沉重的晋升流程即可完成薪资小幅增长，即时奖励卓越贡献者。</p>
+      <div class="bento-value">0.95 ~ 1.04</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card bento-card card-4" data-component="MATRIX" data-variant="bento" data-density="high">
+      <div class="bento-header">
+        <h2 class="bento-title">4. 位置因子 (Location)</h2>
+        <div class="bento-num">04</div>
+      </div>
+      <p class="bento-desc">最具人文关怀的创新：双保底机制。结合各地生活成本调整系数，但设定美国境内 0.8、全球其他地区 0.6 的下限。印度工程师至少获得旧金山 60% 薪酬，形成当地绝对降维打击。</p>
+      <div class="bento-value">Min: 0.6 (Global) / 0.8 (US)</div>
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      Source: PostHog 薪酬福利研究指南 · 第三部分
+    </div>
+  </div>
+
+<!-- from: page_04.html -->
+<div id="slide-auto-1679583141" class="slide">
+    <div class="title-section" data-component="TITLE_BLOCK" data-slot="title">
+      <h1>增长引擎：基于多产品矩阵的销售佣金模型</h1>
+      <p>驱动 ARR 增长与客户平台深度绑定的交叉销售（Cross-sell）乘数机制</p>
+    </div>
+
+    <div class="card table-container" data-component="DATA_TABLE" data-variant="dense" data-density="high">
+      <div class="table-header-desc">
+        不同于传统依据 TCV 提成的做法，销售佣金基数基于前12个月产生的月度经常性收入（ARR）。核心创新在于引入基于付费产品数量的乘数，强力推动一体化平台战略。公式：<strong>最终乘数 = 0.7 + [0.2 × (产品数量 - 1)]</strong>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th width="15%">客户购买产品数</th>
+            <th width="15%">基础系数</th>
+            <th width="15%">增量系数</th>
+            <th width="15%">最终乘数</th>
+            <th width="40%">对销售行为的激励影响分析</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1个产品</strong></td>
+            <td>0.7</td>
+            <td>0</td>
+            <td class="highlight-val">0.7x</td>
+            <td><div class="tag-badge punish">惩罚机制</div>仅销售单一产品（如仅Feature Flags）流失风险高，销售只能拿到业绩的70%，强力抑制单点销售。</td>
+          </tr>
+          <tr>
+            <td><strong>2个产品</strong></td>
+            <td>0.7</td>
+            <td>+0.2</td>
+            <td class="highlight-val">0.9x</td>
+            <td>接近标准佣金，鼓励销售人员至少实现一次交叉销售。</td>
+          </tr>
+          <tr>
+            <td><strong>3个产品</strong></td>
+            <td>0.7</td>
+            <td>+0.4</td>
+            <td class="highlight-val">1.1x</td>
+            <td><div class="tag-badge reward">奖励区间</div>开始获得溢价（110%），激励推销组合（Analytics + Replay + Survey）。</td>
+          </tr>
+          <tr>
+            <td><strong>4个产品</strong></td>
+            <td>0.7</td>
+            <td>+0.6</td>
+            <td class="highlight-val">1.3x</td>
+            <td>高额激励，客户切换成本大幅增加。</td>
+          </tr>
+          <tr>
+            <td><strong>5个产品及以上</strong></td>
+            <td>0.7</td>
+            <td>+0.8</td>
+            <td class="highlight-val">1.5x</td>
+            <td><div class="tag-badge reward">顶级激励</div>粘性极高、流失率极低，支付50%额外佣金。推动销售从售卖功能转向售卖平台价值。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      Source: PostHog 薪酬福利研究指南 · 第四部分
+    </div>
+  </div>
+
+<!-- from: page_05.html -->
+<div id="slide-auto-1708212292" class="slide">
+    <div class="title-section" data-component="TITLE_BLOCK" data-slot="title">
+      <h1>股权即所有权：打破“金手铐”的期权与福利</h1>
+      <p>建立超越雇佣关系的合伙人纽带，赋予极致自主权</p>
+    </div>
+
+    <div class="split-left" data-component="SPLIT_LAYOUT" data-slot="content">
+      <div class="card feature-box">
+        <h3>颠覆性的 10 年行权窗口</h3>
+        <p>颠覆行业默认的离职后 90 天行权规则，提供长达 10 年的期权行权窗口。消除离职员工被迫放弃期权的财务压力，展现极致的长期主义大度，将离职员工转化为终身品牌拥护者。</p>
+      </div>
+
+      <div class="card feature-box">
+        <h3>“默认存活”的远程基础设施</h3>
+        <p>为每位员工提供极高信任度的财务授权：每月 $5,000 的免审批软件、办公与培训额度。“先花钱，后审计”的模式避免了因几十美元订阅而浪费数小时的流程，彻底消除远程工作的摩擦力。</p>
+      </div>
+
+      <div class="card feature-box">
+        <h3>终极激励：离职创业的第一位投资人</h3>
+        <p>如果员工工作满2年离职创业（非竞争），PostHog 承诺成为其第一位天使投资人。这一反常识操作实则是吸引最具“创始人精神”人才的最强武器，将优秀人才的当前贡献直接转化为未来的投资机会。</p>
+      </div>
+    </div>
+
+    <div class="split-right card" data-component="IMAGE" data-slot="image">
+      <img src="posthog_equity_1779086526049.png" alt="Exponential Equity Growth">
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      Source: PostHog 薪酬福利研究指南 · 第五、六部分
+    </div>
+  </div>
+
+<!-- from: page_06.html -->
+<div id="slide-auto-1736841443" class="slide">
+    <div class="title-section" data-component="TITLE_BLOCK" data-slot="title">
+      <h1>核心洞察总结与行业启示</h1>
+      <p>重新定义数字化时代的“雇佣关系”：基于信任、透明和自主的精益实践</p>
+    </div>
+
+    <div class="card-container" data-component="TEXT_LIST" data-variant="cards" data-density="medium">
+      <div class="card insight-card">
+        <div class="icon-wrap">01</div>
+        <h3>算法战胜政治</h3>
+        <p>通过透明公式和客观外部数据基准，PostHog 将传统的内部薪酬分配从一场复杂的政治博弈，转化为一个简单的数学模型。极大地降低了组织的内部协作摩擦和内耗成本，将经理从资源监工转变为团队教练。</p>
+      </div>
+
+      <div class="card insight-card">
+        <div class="icon-wrap">02</div>
+        <h3>精益交付文化</h3>
+        <p>薪酬体系中剔除主观评价奖金，福利设计砍掉冗长审批，引入全栈的 Product Engineer 角色减少交接环节。其本质是对丰田生产方式（TPS）的软件化映射，一切为了加速价值流动，秉持“速度优于完美”。</p>
+      </div>
+
+      <div class="card insight-card">
+        <div class="icon-wrap">03</div>
+        <h3>激励与战略深度耦合</h3>
+        <p>10年期权行权窗口显示出高度的长期主义，用以换取员工当下的全情投入；销售佣金中的“多产品乘数”则完美地支撑了公司平台化护城河的构建战略，证明了优秀的薪酬设计是企业战略执行的顶级指挥棒。</p>
+      </div>
+    </div>
+
+    <div class="source-footer" data-component="SOURCE" data-slot="text">
+      Source: PostHog 薪酬福利研究指南 · 第七、八部分
+    </div>
+  </div>
+
+
+</body>
+</html>
