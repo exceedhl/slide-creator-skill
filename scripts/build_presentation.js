@@ -347,6 +347,10 @@ function buildPresentation() {
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Optional: add a shadow to make slides pop */
             margin: 0 !important;      /* Override individual slide margins */
         }
+        @media print {
+            body { background: #fff !important; padding: 0 !important; gap: 0 !important; }
+            .slide { box-shadow: none !important; margin: 0 !important; page-break-after: always; }
+        }
 /* Global Boilerplate Injected */
 ${baselineCSS}
 

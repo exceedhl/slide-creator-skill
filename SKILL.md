@@ -257,16 +257,36 @@ palette 中的每个 key 直接映射为 `--{key}: {value}`，声明在 `:root` 
 
 ### **5.4 图片生成 (Image Generation Strategy)**
 
-* **策略**: **即时生成 (Immediate Generation)**。
-* **流程与要求**:
-  * 在编写单页 HTML 遇到需要配图的位置时，你必须**主动立刻调用 `generate_image` 工具**生成图片，不要使用网络占位符等待后续！
-  * **精确计算**：利用网格规范或实际占据的行列距，计算出图片的真实像素尺寸 (Px Dimensions)。
-  * **风格注入 Prompt 协议 (Style-Infused Protocol)**: 
-    * 调用 AI 绘图工具时，**必须**将选中风格的视觉特征（从 Theme MD 中的 Visual Philosophy 提取）写进 Prompt。
-    * **Prompt 模版**: `[Dimensions: {W}x{H}] {Style Visual Philosophy (e.g. Minimalist editorial, sepia tone)}, {Content Description}, no text, no words, no letters --ar {Aspect Ratio}`
-    * **例子 (Correct)**: `[Dimensions: 1200x800] High-end business magazine style, sepia tone, A futuristic city skyline with neon lights, no text --ar 3:2`
-  * **严禁操作**: 严禁忽略尺寸直接生成，会导致被裁切；严禁生成带有假字的排版图，必须注明 `no text`。
-  * 生成后，将图片放置到工作区，并在单页 HTML 的样式中直接引用本地相对路径（如 `url('cover.png')`）。
+* **工具可用性探针与询问机制**:
+  * 在排版涉及配图前，你必须先探测环境中是否具备生图能力（如内置生图工具）。
+  * **无论是否探测到内置工具**，你都必须主动向用户询问：“本次排版需要配图，您希望使用：1. 内置生图工具（如有） 2. 您的自定义脚本 3. 放弃配图”。
+  * **禁止使用占位符**：如果最终确认环境中没有任何可用的生图方案（无内置、无脚本），你必须**放弃生图**。绝对严禁生成虚假的图片链接，也**绝对严禁生成任何占位符（Placeholder）图片**。此时你应该使用纯色 CSS 骨架块（如留空的 `.card` 容器）来填补视觉空白，或者智能降级切换回纯文本/组件的排版方案。
+
+* **精确计算与 Prompt 生成**:
+  * **相对宽高比推导**：必须基于当前图片所占的 24x24 栅格数计算出长宽比例。例如跨度 12列 x 24行即约为 8:9。
+  * **Prompt 模版**: `[Dimensions: {W}x{H}] {Style Visual Philosophy (e.g. Minimalist editorial, sepia tone)}, {Content Description} --ar {Aspect Ratio}`
+  * **示例**: `[Dimensions: 1200x800] High-end business magazine style, sepia tone, A futuristic city skyline with neon lights --ar 3:2`
+
+* **持久化与增量迭代 (Lock-in Patch)**:
+  * 每次成功生图后，**强制要求**将生成的 Prompt、宽高比及相关信息写入到幻灯片 HTML 输出文件所在的目录中（命名为 `image_prompts.json`），严禁散落在全局项目根目录。
+  * **持久化格式 (JSON Schema)**：`image_prompts.json` 必须严格采用如下格式（包含一个 `images` 数组）：
+    ```json
+    {
+      "images": [
+        {
+          "filename": "对应的图片文件名或相对路径 (如 page_01_bg.jpg)",
+          "dimensions": "800x1200",
+          "ar": "2:3",
+          "style_prefix": "Business style, minimalist",
+          "prompt": "[Dimensions: 800x1200] Business style, minimalist, A futuristic city skyline --ar 2:3"
+        }
+      ]
+    }
+    ```
+  * **迭代触发红线**：当用户要求对一个**已存在的幻灯片**进行任何修改（无论是单纯改字、换图，还是重新排版）时，你**必须在做任何判断前，主动读取**同目录下的 `image_prompts.json` 历史记录和对应的 HTML 文件。这不仅是为了获取当前内容，更是为了精确继承历史画风。
+  * **迭代重绘规则**：
+    * **纯内容修改**（如用户要求“只换画面内容，其它全都不变”）：**你必须逐字原样抄写 `image_prompts.json` 中的 `[Dimensions: WxH]`、`--ar X:Y` 以及 `style_prefix`**。绝对禁止重新推算宽高比或擅自修改风格前缀！你只能修改 Prompt 中的画面描述内容。修改完 Prompt 后，你**必须立即调用生图工具（如 `generate_image`）**重新生成这张图片，绝不能仅在回复中输出一段文本。
+    * **布局调整重绘**（如 QA 优化阶段改变了图片容器的网格跨度或排版版式）：必须根据新版式**重新推算**“尺寸 `[Dimensions]`”与“宽高比 `--ar`”，同时绝对锁死历史记录中的“内容描述词”和“风格前缀”，确保只改变画面比例而不改变内容和画风。修改完 Prompt 后，**必须立即调用生图工具**重新生成图片。
 
 ## **6. 端到端双模式状态机工作流 (Dual-Mode State Machine & Assembly)**
 
@@ -275,8 +295,129 @@ palette 中的每个 key 直接映射为 `--{key}: {value}`，声明在 `:root` 
 ⚠️ **基础设施黑盒原则 (Black-box Infrastructure)**：
 严禁使用工具（如 view_file 或 cat）去读取 `build_presentation.js` 或 `simple_layout_inspector.js` 的源代码。你必须将它们视作绝对可靠的底层黑盒执行器。只需按照给定的 CLI 命令调用并读取其标准输出 (stdout) 即可。读取 JS 源码不仅毫无必要，还会污染你生成 CSS 时宝贵的上下文注意力。
 
+#### Phase 0: 布局蓝图规划 (Blueprint Planning)
+
+在进入 HTML 生成之前，你需要先为用户输出一份**布局蓝图 (Blueprint)**，让用户确认每页的组件选择、图片策略、信息密度和布局方向。Blueprint 直接在聊天消息中输出，不写文件。
+
+**风格确认**：如果用户尚未指定视觉风格（§4.2 中的风格关键字），你必须在输出 Blueprint 之前先提醒用户确认风格选择。可以列出可用风格供用户挑选，或根据内容主题推荐一个默认风格并征求确认。风格决定了 Blueprint 中组件的视觉表现、图片的画风方向以及 layout archetype，必须先于 Blueprint 锁定。
+
+##### 触发规则
+
+| 条件 | 行为 |
+|:---|:---|
+| 用户主动要求（"先看规划/蓝图/计划"） | **强制** 进入 Blueprint |
+| 总页数 > 8 | **强制** 进入 Blueprint |
+| 总页数 6~8，或包含图片生成需求，或包含复杂组件（CHART / MATRIX / PYRAMID / FUNNEL / STAIRCASE 等） | **自动生成** Blueprint，询问用户是否要审查 |
+| ≤ 5 页且无图片需求 | **跳过** Blueprint，直接进入 Phase 1 |
+| 用户明确说"直接生成" | **跳过** Blueprint |
+
+##### Blueprint 格式
+
+以表格形式输出所有页面的布局规划，一行一页，便于用户快速扫描和批量修改：
+
+```markdown
+| Page | Headline | Density | Layout | Visual | Image Spec |
+|:---|:---|:---:|:---|:---|:---|
+| 1 — Cover | {标题文案} | `low` | 居中大标题 + 底部副标题 | AI生图 — 全出血背景，未来感城市天际线，暗色调 | 14x24 → 747x720 |
+| 2 — Agenda | {标题文案} | `medium` | 全宽列表 | 无 — 纯文本目录页 | — |
+| 3 — 公式拆解 | 四变量方程终结薪酬博弈 | `high` | 左 1/2 文本 + 右 1/2 表格 | 无 — 公式+表格并排 | — |
+| 4 — 进化路线图 | 三阶段薪酬透明化路径 | `medium` | 全宽横向流程图 | HTML组件 — 三阶段线性流程 | — |
+| 5 — 全球对比 | 跨地区薪酬差异一目了然 | `medium` | 左 1/2 图片 + 右 1/2 文本 | AI生图 — 世界地图热力图风格 | 12x18 → 572x514 |
+```
+
+**表格列说明**：
+
+| 列 | 说明 | 用户修改示例 |
+|:---|:---|:---|
+| **Page** | 页码 + 页面简称 | "第 4、5 页合并" / "第 3 页拆成两页" |
+| **Headline** | 页面标题文案 | 直接修改措辞 |
+| **Density** | `low` / `medium` / `high` | "第 3 页改成 medium" |
+| **Layout** | 自然语言布局方向 | "改成上图下文" / "三列等分" |
+| **Visual** | 实现形式 + 内容说明 | "这页改成 AI 生图" / "用 HTML 组件代替" |
+| **Image Spec** | 仅 AI 生图页需要：`{col}x{row}` → `{WxH}`（Phase 1.0 推算的有效像素）。无图页填 `—` | "容器再矮一点" / "图片占更多列" |
+
+**Visual 列取值**：`AI生图 — {内容简述}` / `HTML组件 — {组件类型及说明}` / `无 — {原因}`
+
+**Visual 字段规则**：
+* Agent 直接给出推荐的实现形式（AI生图 / HTML组件 / 无），不提供 A/B 替代选项。
+* 当推荐 AI生图 时，简述仅描述画面内容和调性（如"未来感的数据中心，暗色调"），不含技术 prompt 细节。完整的生图 prompt 在 Phase 1 生成时根据简述 + 风格 Token 构建。
+* 当推荐 HTML组件 时，注明组件类型和变体（如"PROCESS_FLOW (chevron)"）。
+
+##### 交互协议
+
+输出 Blueprint 后，附上确认引导语：
+> "以上是 {N} 页的布局蓝图。您可以：
+> - 回复**确认**开始生成
+> - 指出需要修改的页面（如'第 3 页换成图片'、'第 4 和 5 页合并'）
+> - 回复**直接生成**跳过审查"
+
+**用户回复处理**：
+* **"确认"** → 进入 Phase 1，按 Blueprint 执行
+* **具体修改** → 更新被修改的页面（仅重新输出变更部分，非全量重输）→ 再次确认
+* **"直接生成"** → 跳过 Blueprint，Agent 自主决策进入 Phase 1
+* **迭代轮数不设上限**，完全交给用户节奏
+
+##### Blueprint 确认后的约束力
+
+| 字段 | 约束力 | 说明 |
+|:---|:---|:---|
+| **Visual** | 🔴 强制遵守 | 确认的实现形式（AI生图/HTML组件/无）不可擅自更改 |
+| **Density** | 🔴 强制遵守 | 不可静默修改密度级别 |
+| **Image Spec** | 🔴 强制遵守 | 确认的生图尺寸不可擅自更改。如 Phase 1 发现需调整，必须暂停报告 |
+| **Layout** | 🟡 参考遵守 | 精确的 grid span 在渲染时可微调 |
+| **Headline** | 🟡 参考遵守 | 可根据空间约束微调措辞 |
+
+**冲突处理**：如果 Phase 1 发现 Blueprint 中的某个决策不可行（如内容太多放不进 `low` density），必须**暂停生成**并向用户报告冲突，等待用户决定后再继续。严禁静默修改已确认的 🔴 强制字段。
+
+---
+
+#### Phase 1.0: 图片尺寸预检 (Image Pre-flight) [仅当存在 AI 生图页时]
+
+在开始写任何 HTML 之前，**必须**完成以下推算表并输出到聊天（跳过此步骤等同于跳过 Grid Math 验算，属于严重违规）：
+
+```markdown
+| Page | 容器 Grid Span | 有效像素 (WxH) | 生图尺寸 |
+|:---|:---|:---|:---|
+| P1 Cover | 14col x 24row | 747x720 | 747x720 |
+```
+
+**有效像素推算公式（含 Gap 修正）**：
+
+⚠️ **CSS Grid 的 gap 会侵蚀可用空间**——24 行之间有 23 条 gap，在 gap 较大时（如 medium 密度 24px），gap 总消耗可达内部高度的 85%+，导致每行实际高度仅 2-3px。忽略 gap 会使 AR 估算误差达 20-50%。
+
+```
+步骤 1: 计算内部区域 (扣除 slide padding)
+  inner_w = 1280 - pad_left - pad_right    (出血布局时 = 1280)
+  inner_h = 720  - pad_top  - pad_bottom   (出血布局时 = 720)
+
+步骤 2: 计算单个 grid track 尺寸 (扣除所有 gap)
+  track_w = (inner_w - 23 × gap) / 24
+  track_h = (inner_h - 23 × gap) / 24
+
+步骤 3: 计算容器有效像素 (span 个 track + span-1 个 gap)
+  effective_w = col_span × track_w + (col_span - 1) × gap
+  effective_h = row_span × track_h + (row_span - 1) × gap
+
+步骤 4: AR = effective_w / effective_h
+```
+
+**快速验算示例**（标准 padding 50/60, gap=16px, 容器 12col×20row）：
+```
+inner = 1160×620, track = (1160-368)/24 × (620-368)/24 = 33×10.5
+effective = 12×33+11×16 × 20×10.5+19×16 = 572×514, AR ≈ 1.11:1
+```
+
+**尺寸策略：精确匹配，无需 object-fit**：
+* 将推算出的 `effective_w × effective_h` 直接作为生图工具的尺寸参数。生图工具支持任意尺寸，因此生成的图片与容器像素完全一致，**无需声明任何 `object-fit`**。
+* **CSS 写法**：图片容器使用 `width: 100%; height: 100%;` 即可精确填充，不需要 `object-fit: cover` 或 `contain`。
+
+推算表完成后，将结果回填到 Blueprint 的 `Image Spec` 列（如有 Blueprint），然后进入 Phase 1。
+
+---
+
 #### Phase 1: 纯生成模式 (Generation Mode): 全量生成单页 HTML
 
+*   **Blueprint 约束检查**：如果存在已确认的 Blueprint，Phase 1 必须严格遵守 Blueprint 中标记为 🔴 强制的字段（Visual、Density、Image Spec）。Layout 和 Headline 可在合理范围内微调。具体的组件选择（如 PROCESS_FLOW vs STAIRCASE）由 agent 根据 §3 组件路由规则自主决策。
 *   **创建独立工作区**：每次生成新建专属文件夹 `{YYYYMMDD_HHMMSS}_{Title}/` 存放所有相关文件。
 *   **逐页独立生成**：每页输出为自包含的独立 HTML（包含完整的 `<html>` 到 `<body>`），命名为 `page_01_cover.html` 等。
 *   **强制验算协议 (Grid Math CoT)**：每页 `<style>` 标签第一行**必须**写出该页 24 行网格高度校验注释，例如：`/* Grid Math Check: Title(span 3) + Content(span 20) + Source(span 1) = 24. Math OK! */`。完成验证后方可继续编写样式。
