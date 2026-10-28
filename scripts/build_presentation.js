@@ -198,8 +198,8 @@ function buildPresentation() {
                                             selector.children.clear();
                                             selector.children.appendData({ type: 'IdSelector', name: slideId });
 
-                                            // REMOVE LAYOUT PROPERTIES from body styles
-                                            // When body is mapped to the inner slide container, padding/margin/display ruins the grid.
+                                            // REMOVE LAYOUT PROPERTIES from body styles.
+                                            // body is rewritten onto the slide id; layout here would override the 1280×720 frame.
                                             if (node.block && node.block.type === 'Block') {
                                                 const propertiesToRemove = new Set([
                                                     'display', 'flex-direction', 'align-items', 'justify-content',
@@ -297,18 +297,12 @@ function buildPresentation() {
       width: 1280px;
       height: 720px;
       margin: 0;
-      --slide-padding: 50px 60px;
-      --gap: 15px;
-      --font-base: 18px;
-      padding: var(--slide-padding);
-      display: grid;
-      grid-template-columns: repeat(24, 1fr);
-      grid-template-rows: repeat(24, 1fr);
-      gap: var(--gap);
-      overflow: hidden;
       box-sizing: border-box;
       position: relative;
-      /* removed background-color: #ffffff; to allow individual slides to define their own backgrounds */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      /* background stays on the page so each slide can set its own */
     }`;
 
     // 4) 组装最终 HTML

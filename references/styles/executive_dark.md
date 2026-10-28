@@ -1,93 +1,64 @@
-# Visual Style: Executive Dark (高管深色风)
-
-适用于高端董事会、战略发布、汽车/科技发布会的高管深色模式。传达深邃、昂贵、高端、聚焦的情绪。
+# Style: Executive Dark
 
 ## 1. 视觉哲学
-* **暗夜剧场 (Theater Mode)**：使用极深的墨黑或藏青色铺底，将视觉焦点聚拢在高光文字和图表上。
-* **低频发光 (Low-light Glow)**：克制地使用微妙的高光和微渐变边缘，绝不是赛博朋克式的刺眼霓虹。
-* **留白聚焦 (Negative Space)**：在深色背景下，由于发光体会显得比实际更大，因此需要更多的留白来降低视觉疲劳。
+- 近黑舞台，焦点在白字和少量蓝。
+- 发光只留在 1px 边缘，不做霓虹。
+- 深色里发光体显得更大，所以多留白。
+- 次要文字用锌灰，关键数字用白。
 
-## 2. 全局视觉基建 (Global Primitives)
-* **柔和卡片**：在纯黑底色上使用非常深灰色的卡片，圆角控制在 8-12px。
-* **细线发光**：使用 rgba(255, 255, 255, 0.1) 的微弱边框描绘卡片轮廓。
-* **主次分明**：大片次要文字使用高透的灰色，核心数据使用纯白或品牌高亮色。
+## 2. 版式倾向
+少量卡片，对称或轻微不对称。封面一句话加大数字。
 
-## 3. Machine-Readable Tokens (机器读取变量)
-
-```json
-{
-  "theme": "executive_dark",
-  "design-variance": 4,
-
-  "layout": {
-    "archetype": "grid",
-    "allow-asymmetric-columns": false,
-    "allow-z-overlap": false,
-    "allow-rotation": false,
-    "zero-gap-enforcement": "strict"
-  },
-
-  "palette": {
-    "primary": "#FFFFFF",
-    "accent": "#3B82F6",
-    "accent-light": "#93C5FD",
-    "bg-base": "#09090B",
-    "bg-surface-light": "#18181B",
-    "bg-surface": "#27272A",
-    "text-main": "#FAFAFA",
-    "text-light": "#A1A1AA",
-    "grid-line": "#3F3F46"
-  },
-
-  "typography": {
-    "font-family": "Inter, \"Helvetica Neue\", Arial, sans-serif",
-    "h1": { "size": "48px", "weight": 600, "color": "var(--primary)" },
-    "h2": { "size": "36px", "weight": 500, "color": "var(--primary)" },
-    "h3": { "size": "24px", "weight": 500, "color": "var(--primary)" },
-    "body": { "size": "15px", "weight": 300, "color": "var(--text-light)", "line-height": 1.6 },
-    "max-contrast-ratio": 3.2
-  },
-
-  "density-budgets": {
-    "low":    { "gap": "32px", "max-whitespace-ratio": 0.45 },
-    "medium": { "gap": "24px", "max-whitespace-ratio": 0.30 },
-    "high":   { "gap": "16px", "max-whitespace-ratio": 0.18 }
-  },
-
-  "surface": {
-    "type": "glass",
-    "card-radius": "8px",
-    "card-border": "1px solid rgba(255,255,255,0.1)",
-    "card-shadow": "none",
-    "inner-highlight": "none",
-    "background-effect": "none",
-    "shadow-tint-to-bg": false
-  },
-
-  "forbidden-patterns": [
-    "pure-black-bg",
-    "harsh-white-bg",
-    "sharp-corners"
-  ],
-  "chart-rules": {
-    "sequence": ["#FFFFFF", "#9CA3AF", "#4B5563", "#374151"],
-    "gridlines": "dashed var(--grid-line)",
-    "axis-color": "var(--text-main)"
-  },
-  "image-treatment": {
-    "inherit-surface-radius": true,
-    "filter": "none",
-    "framing": "padded",
-    "caption-style": "12px var(--text-light)"
-  },
-  "diagram-rules": {
-    "stroke-width": "1px",
-    "arrow-style": "sharp",
-    "node-fill": "solid"
-  },
-  "component-overrides": {
-    "funnel": { "default-variant": "sharp-blocks" },
-    "matrix": { "hide-axis-lines": true }
-  }
+## 3. 主题样式模板
+```css
+:root {
+  --primary: #FFFFFF;
+  --accent: #3B82F6;
+  --accent-light: #93C5FD;
+  --bg-base: #09090B;
+  --bg-surface: #18181B;
+  --text-main: #FAFAFA;
+  --text-light: #A1A1AA;
+  --grid-line: #27272A;
+  --font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+.slide { font-family: var(--font-family); }
+h1 { font-size: 46px; font-weight: 600; letter-spacing: -0.02em; margin: 0; color: var(--primary); line-height: 1.2; }
+h2 { font-size: 22px; font-weight: 500; margin: 0; color: var(--primary); }
+p, li { font-size: 15px; line-height: 1.6; color: var(--text-light); }
+.card {
+  background: var(--bg-surface); border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1); box-shadow: none; padding: 28px;
+}
+```
+
+## 4. 标志性特征
+```css
+.stat { font-size: 64px; font-weight: 700; color: var(--primary); letter-spacing: -0.03em; margin: 0; line-height: 1; }
+.stat-label { display: block; margin-top: 8px; font-size: 14px; color: var(--accent-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+```
+
+## 5. 严格禁忌
+纯黑 `#000` 毫无层次、高饱和刺眼白底、生硬直角、浮夸霓虹外发光。
+
+## 6. 标准参考页
+```html
+<div class="slide">
+  <header class="slide-header">
+    <p style="text-transform:uppercase; font-size:12px; font-weight:600; letter-spacing:0.15em; color:var(--accent); margin:0 0 8px;">Board of Directors Briefing</p>
+    <h1>集团数字化转型战略纵深与治理成效</h1>
+  </header>
+  <main class="slide-main" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-content:center;">
+    <section class="card">
+      <p class="stat">99.98%</p>
+      <span class="stat-label">核心交易系统可用性</span>
+      <p style="margin-top:12px;">全面完成多云混合架构演进，全链路容灾切换 RTO 压缩至 30 秒以内。</p>
+    </section>
+    <section class="card">
+      <p class="stat">28.4%</p>
+      <span class="stat-label">研发交付运维成本下降</span>
+      <p style="margin-top:12px;">统一平台工程基础设施落地，标准化组件复用率提升至 76%。</p>
+    </section>
+  </main>
+</div>
 ```

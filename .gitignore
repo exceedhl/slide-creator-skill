@@ -10,3 +10,6 @@ yarn-error.log*
 # Temporary files
 *.log
 scratch/
+
+# Layout inspector screenshots (written beside the deck being checked)
+qa_slide_*.png

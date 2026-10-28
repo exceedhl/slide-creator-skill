@@ -1,95 +1,62 @@
-# Visual Style: Swiss Editorial (瑞士排版风)
-
-这是深受经典瑞士平面设计（Swiss Design / International Typographic Style）影响的幻灯片风格。强调极其严谨的网格系统、非对称的排版平衡、大面积留白与高对比度的无衬线字体。
+# Style: Swiss Editorial
 
 ## 1. 视觉哲学
-* **网格至上 (Grid as Law)**：一切元素必须严格吸附在底层的网格上。
-* **非对称平衡 (Asymmetric Balance)**：通过左右不对称的巨大字号和图形创造视觉张力。
-* **粗野主义排版 (Typographic Brutalism)**：文字不仅是信息的载体，更是版面的主要图形元素。
-* **高对比度 (High Contrast)**：大面积留白搭配纯黑纯白的极简色块。
+- 网格是法律，巨号无衬线字本身就是图形。
+- 不对称平衡：一边很重，一边几乎空。
+- 纯黑、纸白、一点红。没有渐变。
+- 直角、无阴影。结构线只用 1px 黑线。
 
-## 2. 全局视觉基建 (Global Primitives)
-* **无圆角**：绝对直角，0px圆角。
-* **边框极简**：仅在极少数需要结构划分的地方使用 1px 黑线。
-* **无阴影**：绝对扁平化，摒弃所有的 Box Shadow 和 Z-轴伪造。
+## 2. 版式倾向
+不对称分栏。允许竖排侧标和不超过 5° 的装饰倾斜。正文保持水平。
 
-## 3. Machine-Readable Tokens (机器读取变量)
-
-```json
-{
-  "theme": "swiss_editorial",
-  "design-variance": 6,
-
-  "layout": {
-    "archetype": "grid",
-    "allow-asymmetric-columns": true,
-    "allow-z-overlap": true,
-    "allow-rotation": true,
-    "zero-gap-enforcement": "relaxed"
-  },
-
-  "palette": {
-    "primary": "#000000",
-    "accent": "#FF2A00",
-    "bg-base": "#FDFDFD",
-    "bg-surface-light": "#F2F2F2",
-    "bg-surface": "#EBEBEB",
-    "text-main": "#000000",
-    "text-light": "#555555",
-    "grid-line": "#000000"
-  },
-
-  "typography": {
-    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
-    "h1": { "size": "72px", "weight": 900, "color": "var(--primary)", "letter-spacing": "-0.03em" },
-    "h2": { "size": "48px", "weight": 800, "color": "var(--primary)" },
-    "h3": { "size": "24px", "weight": 700, "color": "var(--primary)" },
-    "body": { "size": "16px", "weight": 400, "color": "var(--text-main)", "line-height": 1.4 },
-    "max-contrast-ratio": 4.5
-  },
-
-  "density-budgets": {
-    "low":    { "gap": "40px", "max-whitespace-ratio": 0.55 },
-    "medium": { "gap": "24px", "max-whitespace-ratio": 0.35 },
-    "high":   { "gap": "16px", "max-whitespace-ratio": 0.20 }
-  },
-
-  "surface": {
-    "type": "flat",
-    "card-radius": "0px",
-    "card-border": "none",
-    "card-shadow": "none",
-    "inner-highlight": "none",
-    "background-effect": "none",
-    "shadow-tint-to-bg": false
-  },
-
-  "forbidden-patterns": [
-    "border-radius",
-    "box-shadow",
-    "gradients",
-    "multicolor-icons",
-    "center-alignment"
-  ],
-  "chart-rules": {
-    "sequence": ["#000000", "#FF2A00", "#555555", "#EBEBEB"],
-    "gridlines": "dashed var(--grid-line)",
-    "axis-color": "var(--text-main)"
-  },
-  "image-treatment": {
-    "inherit-surface-radius": true,
-    "filter": "grayscale(100%) contrast(120%)",
-    "framing": "full-bleed",
-    "caption-style": "12px var(--text-light)"
-  },
-  "diagram-rules": {
-    "stroke-width": "3px",
-    "arrow-style": "sharp",
-    "node-fill": "outline"
-  },
-  "component-overrides": {
-    "funnel": { "default-variant": "sharp-blocks" },
-    "matrix": { "hide-axis-lines": false }
-  }
+## 3. 主题样式模板
+```css
+:root {
+  --primary: #000000;
+  --accent: #FF2A00;
+  --bg-base: #FDFDFD;
+  --bg-surface: #F4F4F5;
+  --text-main: #000000;
+  --text-light: #52525B;
+  --grid-line: #000000;
+  --font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", sans-serif;
 }
+.slide { font-family: var(--font-family); }
+h1 { font-size: 68px; font-weight: 900; letter-spacing: -0.04em; line-height: 0.92; margin: 0; text-transform: uppercase; }
+h2 { font-size: 24px; font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: -0.02em; }
+p, li { font-size: 15px; line-height: 1.5; color: var(--text-main); }
+.card { background: transparent; border-radius: 0; box-shadow: none; padding: 0; }
+img { filter: grayscale(1) contrast(1.25); }
+```
+
+## 4. 标志性特征
+```css
+.side-index {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-weight: 900; letter-spacing: 0.2em; font-size: 12px;
+  border-left: 2px solid var(--primary); padding-left: 8px;
+}
+.hairline { border-top: 2px solid var(--primary); margin: 16px 0; }
+.accent { color: var(--accent); }
+```
+
+## 5. 严格禁忌
+圆角卡片、柔和弥散阴影、任何形式的彩色渐变、居中传统英雄版式、花哨彩色多维图标。
+
+## 6. 标准参考页
+```html
+<div class="slide" style="display:grid; grid-template-columns:48px 1.4fr 0.9fr; gap:36px; padding:44px 48px;">
+  <div class="side-index">SECTION 01 / PRINCIPLES</div>
+  <header style="display:flex; flex-direction:column; justify-content:space-between;">
+    <h1>FORM<br>FOLLOWS<br><span class="accent">FUNCTION</span></h1>
+    <p style="font-weight:700; letter-spacing:0.05em;">INTERNATIONAL TYPOGRAPHIC STYLE</p>
+  </header>
+  <main style="display:flex; flex-direction:column; justify-content:flex-end;">
+    <div class="hairline"></div>
+    <h2>非对称的理性秩序</h2>
+    <p style="margin-top:10px; color:var(--text-light);">
+      瑞士排版不仅是一种风格，更是对信息层级与视觉张力的高维掌控。依靠严密的数学网格与字重反差，让文字本身成为版面中最具统治力的视觉图形。
+    </p>
+  </main>
+</div>
 ```

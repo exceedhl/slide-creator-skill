@@ -6,12 +6,12 @@ Slide Creator is a skill used to convert Markdown text directly into neatly form
 
 ## ✨ Core Capabilities
 
-- **Blueprint Planning Before Generation**: Before any code is written, the AI produces a layout blueprint table for you to review — showing each page's headline, density level, layout direction, and image strategy. You can adjust, merge, or reorder pages before generation begins, dramatically reducing rework.
+- **Blueprint When the Deck Is Long**: For decks longer than five pages, or when you ask to see the plan first, the AI shows a one-row-per-page blueprint before writing HTML. Shorter decks go straight to generation.
 - **AI Image Generation Integration**: Need a cover photo or a conceptual diagram? The skill automatically detects available image generation tools (built-in or your own custom scripts) and asks you which to use. Generated image prompts are persisted in `image_prompts.json`, so future edits can perfectly preserve the original art style.
 - **Powerful Built-in Components**: Break away from monotonous plain text. It comes with over a dozen core formatting components frequently used in business reports, such as Matrix, Funnel, Process Flow, and Staircase. AI will automatically apply them based on the context of your outline.
-- **Strict Automated Detection (Automated QA)**: Worried about AI-generated text overlapping or overflowing the borders? We have a built-in automated layout inspector. Paired with formatting rules, the AI can achieve self-healing corrections by measuring layout overflows.
+- **Automated Layout Check**: After assembly, a layout inspector screenshots each 1280×720 slide and flags clipped text, elements outside the canvas, and images that failed to load. The AI fixes those before handing the deck over.
 - **10 Rich Visual Styles**: Built-in support for 10 highly-polished design themes (e.g., Business/McKinsey, Research Report, Ethereal Glass, Sketch, Editorial Luxury, Swiss Editorial, Sakura Chroma, etc.) to match any presentation context.
-- **Full-Bleed Cover Layouts**: Cover pages and hero image pages can use a zero-padding grid mode for edge-to-edge immersive visuals — no more awkward borders around your cover photos.
+- **Full-Bleed Cover Layouts**: Cover, closing, and explicitly immersive pages drop the slide padding so images sit edge to edge.
 - **Interactive WYSIWYG Editor**: Features a local visual editor (via Tweakpane & Node.js HTTP server) that allows real-time modifications of text, fonts, colors, and layouts directly in the browser, with changes synced back to your local files. Now with built-in print/PDF support via `@media print`.
 
 ---
@@ -177,10 +177,10 @@ If your AI environment does not support instruction loading (such as regular Cur
 Throw a long article/research at AI, and add the Prompt:
 > "Use your local slide-creator-skill to help me organize this 3000-word go-to-market strategy into a 12-page Business Report PPT. Use the Business style template."
 
-The AI will follow the `SKILL.md` guidelines, calculating grid dimensions and assembling it page by page.
+The AI follows `SKILL.md`: one self-contained page at a time, then assembly, a visual check, and the local editor.
 
-**Scenario 2: Launch script to prevent boundary overflow and correct errors (QA Mode)**
-When you visually observe that there is too much text severely squeezed on a certain page:
+**Scenario 2: Ask for another pass**
+If a page still feels tight after delivery:
 > "Check and optimize the slides"
 
 ## 🤖 Supported Models Compatibility 

@@ -1,97 +1,66 @@
-# Visual Style: Ethereal Glass (空灵玻璃风)
-
-适用于 AI/科技主题演讲、前沿技术发布、创新实验室展示等需要传达"未来感"和"技术深度"的场景。深受 Vercel、Linear 等顶级科技产品设计语言启发。
+# Style: Ethereal Glass
 
 ## 1. 视觉哲学
-* **深空舞台 (Deep Space Stage)**：使用接近 OLED 黑的极深底色，让内容如同悬浮在虚空中的发光体。
-* **玻璃折射 (Glass Refraction)**：超越简单的毛玻璃效果，通过 1px 内发光边框、内阴影高光模拟真实玻璃的边缘折射。
-* **克制发光 (Restrained Glow)**：背景使用极淡的径向渐变光斑（如蓝色/紫色），营造深邃空间感，但绝不是赛博朋克的刺眼霓虹。
-* **不对称张力 (Asymmetric Tension)**：允许大面积留白与紧凑信息块形成强烈对比，通过非对称分栏创造视觉张力。
+- 近黑深空，内容像悬浮的玻璃。
+- 1px 白边加内高光，不像毛玻璃贴纸。
+- 背景只有一块很淡的蓝光，不是霓虹。
+- 一大块紧、一大块空，禁止三列等分。
 
-## 2. 全局视觉基建 (Global Primitives)
-* **玻璃卡片**：深灰底色卡片 + 16px 圆角 + 1px rgba 白色边框 + 内阴影高光。
-* **弥散阴影**：卡片阴影宽大柔和、扩散远、透明度极低，营造"悬浮"感。
-* **单一强调色**：仅使用一个高纯度蓝/紫色作为唯一的 Accent，其余全部收敛为灰度。
-* **纤细无衬线**：使用 Geist / Satoshi 等现代几何 Grotesk 字体，紧缩字距。
+## 2. 版式倾向
+不对称 Bento。一张英雄卡超过主区一半，其余卡片明显更小。
 
-## 3. Machine-Readable Tokens (机器读取变量)
-
-```json
-{
-  "theme": "ethereal_glass",
-  "design-variance": 8,
-
-  "layout": {
-    "archetype": "bento",
-    "allow-asymmetric-columns": true,
-    "allow-z-overlap": true,
-    "allow-rotation": false,
-    "zero-gap-enforcement": "relaxed"
-  },
-
-  "palette": {
-    "primary": "#FFFFFF",
-    "accent": "#3B82F6",
-    "accent-light": "#93C5FD",
-    "bg-base": "#050505",
-    "bg-surface-light": "#0A0A0F",
-    "bg-surface": "#18181B",
-    "text-main": "#FAFAFA",
-    "text-light": "#71717A",
-    "grid-line": "#27272A"
-  },
-
-  "typography": {
-    "font-family": "\"Geist\", \"Satoshi\", \"Helvetica Neue\", sans-serif",
-    "h1": { "size": "72px", "weight": 600, "color": "var(--primary)", "letter-spacing": "-0.03em" },
-    "h2": { "size": "42px", "weight": 500, "color": "var(--primary)" },
-    "h3": { "size": "24px", "weight": 500, "color": "var(--accent)" },
-    "body": { "size": "15px", "weight": 300, "color": "var(--text-light)", "line-height": 1.6 },
-    "max-contrast-ratio": 4.8
-  },
-
-  "density-budgets": {
-    "low":    { "gap": "40px", "max-whitespace-ratio": 0.65 },
-    "medium": { "gap": "24px", "max-whitespace-ratio": 0.45 },
-    "high":   { "gap": "12px", "max-whitespace-ratio": 0.25 }
-  },
-
-  "surface": {
-    "type": "glass",
-    "card-radius": "16px",
-    "card-border": "1px solid rgba(255,255,255,0.1)",
-    "card-shadow": "0 20px 40px -15px rgba(0,0,0,0.3)",
-    "inner-highlight": "inset 0 1px 1px rgba(255,255,255,0.1)",
-    "background-effect": "radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.08), transparent 50%)",
-    "shadow-tint-to-bg": true
-  },
-
-  "forbidden-patterns": [
-    "pure-black-bg",
-    "neon-glows",
-    "center-aligned-hero",
-    "3-column-equal-cards",
-    "heavy-borders"
-  ],
-  "chart-rules": {
-    "sequence": ["#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE"],
-    "gridlines": "dashed var(--grid-line)",
-    "axis-color": "var(--text-light)"
-  },
-  "image-treatment": {
-    "inherit-surface-radius": true,
-    "filter": "none",
-    "framing": "padded",
-    "caption-style": "12px var(--text-light)"
-  },
-  "diagram-rules": {
-    "stroke-width": "1px",
-    "arrow-style": "sharp",
-    "node-fill": "solid"
-  },
-  "component-overrides": {
-    "funnel": { "default-variant": "sharp-blocks" },
-    "matrix": { "hide-axis-lines": true }
-  }
+## 3. 主题样式模板
+```css
+:root {
+  --primary: #FFFFFF;
+  --accent: #3B82F6;
+  --accent-light: #93C5FD;
+  --bg-base: #050505;
+  --bg-surface: rgba(24,24,27,0.72);
+  --text-main: #FAFAFA;
+  --text-light: #71717A;
+  --grid-line: #27272A;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+.slide { font-family: var(--font-family); }
+.slide::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.16), transparent 52%);
+}
+h1 { font-size: 56px; font-weight: 600; letter-spacing: -0.03em; margin: 0; line-height: 1.15; }
+h2 { font-size: 20px; font-weight: 500; color: var(--accent-light); margin: 0; }
+p { font-size: 14px; line-height: 1.6; color: var(--text-light); }
+.card {
+  position: relative; z-index: 1; border-radius: 16px; padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 20px 40px -18px rgba(0,0,0,0.45);
+}
+```
+
+## 4. 标志性特征
+英雄卡跨两列或占主区一半以上，小卡只放一个核心指标或极短释义。背景光斑位于内容层之下。
+
+## 5. 严格禁忌
+纯黑无层次底板、刺眼霓虹光晕、居中对称传统标题、三张完全等大卡片、粗重实体边框。
+
+## 6. 标准参考页
+```html
+<div class="slide">
+  <main class="slide-main" style="display:grid; grid-template-columns:1.4fr 0.8fr; grid-template-rows:1.3fr 0.8fr; gap:16px;">
+    <section class="card" style="grid-row:1 / span 2; display:flex; flex-direction:column; justify-content:flex-end;">
+      <p style="text-transform:uppercase; font-size:11px; letter-spacing:0.2em; color:var(--accent); margin:0 0 8px;">AUTONOMOUS AGENT RUNTIME</p>
+      <h1>神经引擎接管端侧复杂决策流</h1>
+      <p style="margin-top:12px;">端云协同架构下的高并发推理分发，毫秒级感知环境变迁并执行多模态闭环反馈。</p>
+    </section>
+    <section class="card">
+      <h2 style="font-size:36px; color:#fff; font-weight:700;">8.4 ms</h2>
+      <p style="color:var(--accent-light); margin:4px 0 0;">端到端推理首包时延</p>
+    </section>
+    <section class="card">
+      <h2 style="font-size:36px; color:#fff; font-weight:700;">4.2×</h2>
+      <p style="color:var(--accent-light); margin:4px 0 0;">单位算力能效比提升</p>
+    </section>
+  </main>
+</div>
 ```
